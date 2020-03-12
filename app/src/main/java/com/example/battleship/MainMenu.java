@@ -18,10 +18,11 @@ public class MainMenu extends AppCompatActivity  {
         setContentView(R.layout.main_menu);
 
         start = MediaPlayer.create(MainMenu.this,R.raw.start);
+        start.setLooping(true);
         start.start();
 
         mainVid = (VideoView)findViewById(R.id.videoView2);
-        String videopath = "android.resource://com.example.battleship/" + R.raw.updatemain;
+        String videopath = "android.resource://com.example.battleship/" + R.raw.updatemenus;
         Uri uri = Uri.parse(videopath);
         mainVid.setVideoURI(uri);
         mainVid.start();
