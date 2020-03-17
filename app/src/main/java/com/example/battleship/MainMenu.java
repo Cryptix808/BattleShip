@@ -1,14 +1,16 @@
 package com.example.battleship;
 
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.View;
 import android.widget.VideoView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class MainMenu extends AppCompatActivity  {
+public class MainMenu extends AppCompatActivity implements View.OnClickListener {
     MediaPlayer start;
     VideoView mainVid;
 
@@ -29,4 +31,13 @@ public class MainMenu extends AppCompatActivity  {
 
     }
 
+    private void button1Click(){
+        startActivity(new Intent("com.example.battleship."));
+    }
+
+
+    @Override
+    public void onClick(View v) {
+
+    }
 }
