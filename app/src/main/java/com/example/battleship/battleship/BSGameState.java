@@ -5,80 +5,148 @@ import com.example.battleship.GameFramework.infoMessage.GameState;
 public class BSGameState extends GameState {
     public enum board { water, missed, hit, ship }
 
-    private int[][] player1Board;
-    private int[][] player2Board;
+    private int[][] humanPlayerBoard;
+    private int[][] computerPlayerBoard;
 
-    int player1Hits;
-    int player2Hits;
+    int humanPlayerHits;
+    int computerPlayerHits;
+
+    boolean cpuHasPlaced;
+
+    int patrolBoat = 2;
+    int destroyer = 3;
+    int submarine = 3;
+    int battleship = 4;
+    int aircraftCarrier = 5;
+    int horizontal = 0;
+    int vertical = 1;
 
     // inital
     public BSGameState(){
-        player1Board = new int[10][10];
-        player2Board = new int[10][10];
+        humanPlayerBoard = new int[10][10];
+        computerPlayerBoard = new int[10][10];
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
-                player1Board[i][j] = board.water.ordinal();
-                player2Board[i][j] = board.water.ordinal();
+                humanPlayerBoard[i][j] = board.water.ordinal();
+                computerPlayerBoard[i][j] = board.water.ordinal();
             }
         }
+        cpuHasPlaced = false;
     }
 
     // placing ships
-    public BSGameState(int[][] player1Board, int [][] player2Board) {
+    public BSGameState(int[][] humanPlayerBoard, int [][] computerPlayerBoard, boolean cpuHasPlaced) {
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
-                this.player1Board[i][j] = player1Board[i][j];
-                this.player2Board[i][j] = player2Board[i][j];
+                this.humanPlayerBoard[i][j] = humanPlayerBoard[i][j];
+                this.computerPlayerBoard[i][j] = computerPlayerBoard[i][j];
             }
         }
+        this.cpuHasPlaced = cpuHasPlaced;
     }
 
     // starting game
-    public BSGameState(BSGameState bs, int[][] player1Board, int [][] player2Board) {
+    public BSGameState(int[][] humanPlayerBoard, int [][] computerPlayerBoard) {
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
-                this.player1Board[i][j] = player1Board[i][j];
-                this.player2Board[i][j] = player2Board[i][j];
+                this.humanPlayerBoard[i][j] = humanPlayerBoard[i][j];
+                this.computerPlayerBoard[i][j] = computerPlayerBoard[i][j];
             }
         }
         // initalize rest of data
-        player1Hits = 0;
-        player2Hits = 0;
+        humanPlayerHits = 0;
+        computerPlayerHits = 0;
     }
 
     // in game
     public BSGameState(BSGameState bs) {
-        // deep copy everything
-
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                this.humanPlayerBoard[i][j] = bs.humanPlayerBoard[i][j];
+                this.computerPlayerBoard[i][j] = bs.computerPlayerBoard[i][j];
+            }
+        }
+        // initalize rest of data
+        humanPlayerHits = bs.humanPlayerHits;
+        computerPlayerHits = bs.computerPlayerHits;
     }
 
+    public boolean placeShip(int length, int x, int y, int orientation) {
 
-    public boolean placeShip(int length, int x, int y) {
-        return false;
+        if (orientation == 0) {
+            if (length + y < 9) {
+                return false;
+            }
+        }
+        if (orientation == 1) {
+            if (length + x < 9) {
+                return false;
+            }
+        }
+        for (int i = 0; i < length; i++) {
+            if (humanPlayerBoard[x][y] != board.water.ordinal()) {
+                return false;
+            }
+        }
+        for (int i = 0; i < length; i++) {
+            humanPlayerBoard[x][y] = board.ship.ordinal();
+        }
+
+        return true;
     }
-    public boolean firePlayer1(int x, int y){
-        if(player2Board[x][y] == board.water.ordinal()) {
-            //apply
-            player1Hits++;
+
+    public boolean placeComputerShipsDumb(int pattern) {
+        switch(pattern){
+            default:
+                for (int i = 4; i < 9; i++) {
+                    computerPlayerBoard[i][2] = board.ship.ordinal();
+                }
+                for (int i = 2; i < 5; i++){
+                    computerPlayerBoard[8][i] = board.ship.ordinal();
+                }
+
+        }
+        return true;
+    }
+
+    public boolean placeComputerShipsSmart(int pattern) {
+
+        return true;
+    }
+
+    public boolean firehumanPlayer(int x, int y){
+        if(computerPlayerBoard[x][y] == board.water.ordinal()) {
+            computerPlayerBoard[x][y] = board.missed.ordinal();
             return true;
         }
+        if (computerPlayerBoard[x][y] == board.ship.ordinal()) {
+            computerPlayerBoard[x][y] = board.hit.ordinal();
+            humanPlayerHits++;
+        }
+
         return false;
     }
 
-    public boolean firePlayer2(int x, int y){
-        if(player1Board[x][y] == board.water.ordinal()) {
-            //apply
-            player2Hits++;
+    public boolean firecomputerPlayer(int x, int y){
+        if(humanPlayerBoard[x][y] == board.water.ordinal()) {
+            humanPlayerBoard[x][y] = board.missed.ordinal();
             return true;
+        }
+        if (humanPlayerBoard[x][y] == board.ship.ordinal()) {
+            humanPlayerBoard[x][y] = board.hit.ordinal();
+            computerPlayerHits++;
         }
         return false;
     }
 
     public int winner() {
-        if(player1Hits == 14) {
+        if(humanPlayerHits == 14) {
             return 1;
         }
-
+        if(computerPlayerHits == 14){
+            return 2;
+        }
+        return 0;
     }
 
 }
