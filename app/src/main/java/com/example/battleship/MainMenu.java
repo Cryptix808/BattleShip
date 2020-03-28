@@ -31,18 +31,8 @@ public class MainMenu extends AppCompatActivity implements View.OnClickListener 
 
     }
 
-    private void startClick(){
-        startActivity(new Intent("com.example.battleship.game_config_main"));
-    }
-
-
     @Override
     public void onClick(View v) {
-        switch(v.getId()){
-            case R.id.startButton:
-                startClick();
-                break;
 
-        }
     }
 }

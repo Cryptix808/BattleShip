@@ -8,12 +8,13 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BoardView extends View{
+public class BoardView extends View implements Serializable {
 
-    private final List<BoardTouchListener> listeners = new ArrayList<>();
+
     private final int boardColor = Color.argb(0,0255,255,255);
     private final int redColor = Color.rgb(255,69,0);
     private final int blackColor = Color.rgb(0,0,0);
@@ -54,25 +55,7 @@ public class BoardView extends View{
         this.boardSize = board.size();
     }
 
-    //Overridden to detect a board touch. When board is touched corresponding place is identified
-    @Override
-    public boolean onTouchEvent(MotionEvent event){
-        switch(event.getAction()){
-            case MotionEvent.ACTION_UP:
-                int xy = locatePlace(event.getX(), event.getY());
-                invalidate();
-                if(xy >= 0){
-                    notifyBoardTouch(xy/100, xy%100);
-                }
-                break;
 
-            case MotionEvent.ACTION_DOWN:
-            case MotionEvent.ACTION_MOVE:
-            case MotionEvent.ACTION_CANCEL:
-
-        }
-        return true;
-    }
 
     //Draw a 2-D representation of the board
     @Override
@@ -141,16 +124,6 @@ public class BoardView extends View{
         return Math.min(getMeasuredWidth(), getMeasuredHeight()) / (float) boardSize;
     }
 
-    //Calculate the number of horizontal/vertical lines
-    private int numLines(){
-        return boardSize + 1;
-    }
-
-    //Calculate the max screen coordinates
-    private float maxCoord(){
-        return lineGap() * (numLines() - 1);
-    }
-
     private int locatePlace(float x, float y){
         if(x <= maxCoord() && y <= maxCoord()){
             final float placeSize = lineGap();
@@ -160,6 +133,16 @@ public class BoardView extends View{
 
         }
         return - 1;
+    }
+
+    //Calculate the number of horizontal/vertical lines
+    private int numLines(){
+        return boardSize + 1;
+    }
+
+    //Calculate the max screen coordinates
+    private float maxCoord(){
+        return lineGap() * (numLines() - 1);
     }
 
     int locateX(float x){
@@ -175,28 +158,5 @@ public class BoardView extends View{
 
     }
 
-    //Registers the given listener
-    void addBoardTouchListener(BoardTouchListener listener){
-        if(!listeners.contains(listener)){
-            listeners.add(listener);
-        }
-    }
 
-    //Unregister the listener
-    public void removeBoardTouchListener(BoardTouchListener listener){
-        listeners.remove(listener);
-    }
-
-    //Notify listeners
-    private void notifyBoardTouch(int x, int y){
-        for(BoardTouchListener listener : listeners){
-            listener.onTouch(x,y);
-        }
-    }
-
-
-    public interface BoardTouchListener{
-        void onTouch(int x, int y);
-
-    }
 }

@@ -4,7 +4,11 @@ import com.example.battleship.GameFramework.infoMessage.GameState;
 
 public class BSGameState extends GameState {
 
-public boolean checkIfGameOver(boolean r){
+    public BSGameState(BSGameState info) {
+        super();
+    }
+
+    public boolean checkIfGameOver(boolean r){
     return r;
 }
 
