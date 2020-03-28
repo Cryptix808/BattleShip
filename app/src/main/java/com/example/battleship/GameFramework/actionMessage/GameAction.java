@@ -59,4 +59,6 @@ public abstract class GameAction implements Serializable {
     public void setPlayer(GamePlayer p) {
         this.player = p;
     }
+
+
 }
