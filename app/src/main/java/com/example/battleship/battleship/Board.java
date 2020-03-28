@@ -6,4 +6,16 @@ package com.example.battleship.battleship;
  */
 
 public class Board {
+
+    private final int size;
+
+    Board(int size, String player){
+        this.size = size;
+
+    }
+
+    int size(){
+        return size;
+    }
+
 }

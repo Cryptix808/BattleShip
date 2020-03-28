@@ -2,7 +2,7 @@ package com.example.battleship.battleship;
 
 import com.example.battleship.GameFramework.LocalGame;
 
-public class BSLocalGame extends LocalGame {
+public class BSLocalGame {
     //Tag for logging
     private static final String TAG = "BSLocalGame";
     // the game's state
