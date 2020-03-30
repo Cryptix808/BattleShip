@@ -10,22 +10,20 @@ public class BSGameStateTest {
 
 
     @Test
-    public boolean cpu() throws Exception{
+    public void cpu() throws Exception {
         BSGameState bs = new BSGameState();
-        if(bs.getCPUhasPlaced() == false){
-            return false;
-        }
-        if(bs.getCPUhasPlaced() == true){
-            return true;
-        }
-        return true;
+        assertEquals(false, bs.getCPUhasPlaced());
+
+
     }
 
+/*
     @Test
+    //public void boolean placeShip(int length, int x, int y, int orientation) throws Exception {
     public void placeShip(int length, int x, int y, int orientation) {
 
-    public boolean placeShip(int length, int x, int y, int orientation) throws Exception {
-        BSGameState bs =  new BSGameState();
+        // public boolean placeShip(int length, int x, int y, int orientation) throws Exception {
+        BSGameState bs = new BSGameState();
         if (orientation == 0) {
             if (length + y < 9) {
 
@@ -39,16 +37,16 @@ public class BSGameStateTest {
         for (int i = 0; i < length; i++) {
             if (humanPlayerBoard[x][y] != BSGameState.board.water.ordinal()) {
 
-            if (bs.getHumanPlayerBoard()[x][y] != BSGameState.board.water.ordinal()) {
-                return false;
+                if (bs.getHumanPlayerBoard()[x][y] != BSGameState.board.water.ordinal()) {
+                    return false;
+                }
             }
-        }
-        for (int i = 0; i < length; i++) {
-            bs.getHumanPlayerBoard()[x][y] = BSGameState.board.ship.ordinal();
-        }
+            for (int i = 0; i < length; i++) {
+                bs.getHumanPlayerBoard()[x][y] = BSGameState.board.ship.ordinal();
+            }
 
 
-    }
+        }
 
     @Test
     public boolean fireHumanPlayer(int x, int y){
@@ -70,43 +68,45 @@ public class BSGameStateTest {
 
 
     }
-
+*/
     @Test
-    public void fireComputerPlayer(int x, int y) throws Exception{
+    public void fireComputerPlayer() throws Exception{
         BSGameState bs =  new BSGameState();
-        assertEquals(bs.humanPlayerBoard[x][y], BSGameState.board.water.ordinal());
-        assertEquals(x, 1);
-        assertEquals(y, 1);
-        if(bs.humanPlayerBoard[x][y] == BSGameState.board.water.ordinal()) {
+
+        assertEquals(BSGameState.board.water.ordinal(), bs.humanPlayerBoard);
+        //assertEquals(1, x);
+        //assertEquals(1, y);
+       /* if(bs.humanPlayerBoard[x][y] == BSGameState.board.water.ordinal()) {
             bs.humanPlayerBoard[x][y] = BSGameState.board.missed.ordinal();
         }
         if (bs.humanPlayerBoard[x][y] == BSGameState.board.ship.ordinal()) {
             bs.humanPlayerBoard[x][y] = BSGameState.board.hit.ordinal();
             bs.computerPlayerHits++;
         }
-        return false;
+        */
     }
 
-    @Test
-    public void winner() throws Exception{
-        BSGameState bs =  new BSGameState();
-        assertEquals(bs.humanPlayerHits, 12);
-        assertEquals(bs.computerPlayerHits, 17);
-        if(bs.humanPlayerHits == 17) {
+
+
+        @Test
+        public void winner () throws Exception {
+            BSGameState bs = new BSGameState();
+            assertEquals(0, bs.humanPlayerHits);
+            assertEquals(0, bs.computerPlayerHits);
+            //if the game were actually played, we'd change these values to 17 so that the
+            //computer would check for the winner at 17 hits, ending the game
 
         }
-        if(bs.computerPlayerHits == 17){
 
+        @Test
+        public void getPlayer () throws Exception {
+            BSGameState bs = new BSGameState();
+            bs.setPlayer(1);
+            assertEquals(bs.getPlayer(), 1);
+            bs.setPlayer(0);
+            assertEquals(bs.getPlayer(), 0);
         }
-
     }
 
-    @Test
-    public void getPlayer() throws Exception {
-        BSGameState bs = new BSGameState();
-        bs.setPlayer(1);
-        assertEquals(bs.getPlayer(), 1);
-        bs.setPlayer(0);
-        assertEquals(bs.getPlayer(), 0);
-    }
-}
+
+

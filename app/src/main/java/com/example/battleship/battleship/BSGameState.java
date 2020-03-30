@@ -14,6 +14,21 @@ public class BSGameState extends GameState {
     boolean cpuHasPlaced;
     // inital
 
+    public int getHumanPlayerHits() {
+        return humanPlayerHits;
+    }
+    public boolean getCPUhasPlaced(){ return cpuHasPlaced;  }
+    public int getComputerPlayerHits() {
+        return computerPlayerHits;
+    }
+
+    public int[][] getHumanPlayerBoard(){
+        return humanPlayerBoard;
+    }
+    public int[][] getComputerPlayerBoard(){
+        return computerPlayerBoard;
+    }
+
     public BSGameState(){
         humanPlayerBoard = new int[10][10];
         computerPlayerBoard = new int[10][10];
@@ -133,9 +148,6 @@ public class BSGameState extends GameState {
         return false;
     }
 
-    public boolean getfireHumanPlayer(int x, int y){
-        return fireHumanPlayer(x,y);
-    }
 
     public int getNextPlayer() {
         if (player == 1) {
