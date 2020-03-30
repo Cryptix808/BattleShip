@@ -132,8 +132,9 @@ public class BSGameState extends GameState {
         }
         return false;
     }
-    public int getfireComputerPlayer(int x, int y){
-        return x, y;
+
+    public boolean getfireHumanPlayer(int x, int y){
+        return fireHumanPlayer(x,y);
     }
 
     public int getNextPlayer() {
