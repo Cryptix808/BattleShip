@@ -17,73 +17,41 @@ public class BSGameStateTest {
 
     }
 
-/*
+
     @Test
     //public void boolean placeShip(int length, int x, int y, int orientation) throws Exception {
-    public void placeShip(int length, int x, int y, int orientation) {
+    public void placeShip() throws Exception{
 
         // public boolean placeShip(int length, int x, int y, int orientation) throws Exception {
         BSGameState bs = new BSGameState();
-        if (orientation == 0) {
-            if (length + y < 9) {
+        assertEquals(BSGameState.board.water.ordinal(), bs.humanPlayerBoard);
+        //if the game were played, the real values would show instead of random values
 
-            }
-        }
-        if (orientation == 1) {
-            if (length + x < 9) {
-
-            }
-        }
-        for (int i = 0; i < length; i++) {
-            if (humanPlayerBoard[x][y] != BSGameState.board.water.ordinal()) {
-
-                if (bs.getHumanPlayerBoard()[x][y] != BSGameState.board.water.ordinal()) {
-                    return false;
-                }
-            }
-            for (int i = 0; i < length; i++) {
-                bs.getHumanPlayerBoard()[x][y] = BSGameState.board.ship.ordinal();
-            }
-
-
-        }
-
-    @Test
-    public boolean fireHumanPlayer(int x, int y){
-
-
-    public boolean fireHumanPlayer(int x, int y) throws Exception{
-        BSGameState bs = new BSGameState();
-        assertEquals(bs.computerPlayerBoard[x][y], BSGameState.board.water.ordinal());
-        assertEquals(x,1);
-        assertEquals(y,1);
-        if(bs.computerPlayerBoard[x][y] == BSGameState.board.water.ordinal()) {
-            bs.computerPlayerBoard[x][y] = BSGameState.board.missed.ordinal();
-            return true;
-        }
-        if (bs.computerPlayerBoard[x][y] == BSGameState.board.ship.ordinal()) {
-            bs.computerPlayerBoard[x][y] = BSGameState.board.hit.ordinal();
-            bs.computerPlayerHits++;
-        }
 
 
     }
-*/
+
+    @Test
+    public void fireHumanPlayer() throws Exception{
+
+
+
+        BSGameState bs = new BSGameState();
+        assertEquals(BSGameState.board.water.ordinal(), bs.computerPlayerBoard);
+        //if game were played, real values would show instead of random values
+
+
+
+    }
+
     @Test
     public void fireComputerPlayer() throws Exception{
         BSGameState bs =  new BSGameState();
 
         assertEquals(BSGameState.board.water.ordinal(), bs.humanPlayerBoard);
-        //assertEquals(1, x);
-        //assertEquals(1, y);
-       /* if(bs.humanPlayerBoard[x][y] == BSGameState.board.water.ordinal()) {
-            bs.humanPlayerBoard[x][y] = BSGameState.board.missed.ordinal();
-        }
-        if (bs.humanPlayerBoard[x][y] == BSGameState.board.ship.ordinal()) {
-            bs.humanPlayerBoard[x][y] = BSGameState.board.hit.ordinal();
-            bs.computerPlayerHits++;
-        }
-        */
+        //if game were played, real values would be displayed instead of random ones
+
+
     }
 
 
