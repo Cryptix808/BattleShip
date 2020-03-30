@@ -32,14 +32,18 @@ public class BSGameStateTest {
     }
 
     @Test
-    public boolean fireHumanPlayer(int x, int y){
-        if(computerPlayerBoard[x][y] == BSGameState.board.water.ordinal()) {
-            computerPlayerBoard[x][y] = BSGameState.board.missed.ordinal();
+    public boolean fireHumanPlayer(int x, int y) throws Exception{
+        BSGameState bs = new BSGameState();
+        assertEquals(bs.computerPlayerBoard[x][y], BSGameState.board.water.ordinal());
+        assertEquals(x,1);
+        assertEquals(y,1);
+        if(bs.computerPlayerBoard[x][y] == BSGameState.board.water.ordinal()) {
+            bs.computerPlayerBoard[x][y] = BSGameState.board.missed.ordinal();
             return true;
         }
-        if (computerPlayerBoard[x][y] == BSGameState.board.ship.ordinal()) {
-            computerPlayerBoard[x][y] = BSGameState.board.hit.ordinal();
-            humanPlayerHits++;
+        if (bs.computerPlayerBoard[x][y] == BSGameState.board.ship.ordinal()) {
+            bs.computerPlayerBoard[x][y] = BSGameState.board.hit.ordinal();
+            bs.computerPlayerHits++;
         }
 
         return false;

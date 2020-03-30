@@ -60,10 +60,7 @@ public class BSHumanPlayer extends GameHumanPlayer implements Button.OnClickList
     @Override
     public void receiveInfo(GameInfo info) {
         if(info instanceof BSGameState){
-            if(((BSGameState) info).checkShipPlacement()){
 
-
-            }
         }
         else{
             bss = new BSGameState((BSGameState) info);
