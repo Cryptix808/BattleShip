@@ -1,4 +1,6 @@
 package com.example.battleship;
+import android.view.View;
+
 import com.example.battleship.battleship.BSGameState;
 
 import org.junit.Test;
@@ -6,9 +8,22 @@ import static org.junit.Assert.*;
 
 public class BSGameStateTest {
 
-    @Test
-    public boolean placeShip(int length, int x, int y, int orientation) {
 
+    @Test
+    public boolean cpu() throws Exception{
+        BSGameState bs = new BSGameState();
+        if(bs.getCPUhasPlaced() == false){
+            return false;
+        }
+        if(bs.getCPUhasPlaced() == true){
+            return true;
+        }
+        return true;
+    }
+
+    @Test
+    public boolean placeShip(int length, int x, int y, int orientation) throws Exception {
+        BSGameState bs =  new BSGameState();
         if (orientation == 0) {
             if (length + y < 9) {
                 return false;
@@ -20,12 +35,12 @@ public class BSGameStateTest {
             }
         }
         for (int i = 0; i < length; i++) {
-            if (humanPlayerBoard[x][y] != BSGameState.board.water.ordinal()) {
+            if (bs.getHumanPlayerBoard()[x][y] != BSGameState.board.water.ordinal()) {
                 return false;
             }
         }
         for (int i = 0; i < length; i++) {
-            humanPlayerBoard[x][y] = BSGameState.board.ship.ordinal();
+            bs.getHumanPlayerBoard()[x][y] = BSGameState.board.ship.ordinal();
         }
 
         return true;
@@ -33,6 +48,7 @@ public class BSGameStateTest {
 
     @Test
     public boolean fireHumanPlayer(int x, int y){
+
         if(computerPlayerBoard[x][y] == BSGameState.board.water.ordinal()) {
             computerPlayerBoard[x][y] = BSGameState.board.missed.ordinal();
             return true;

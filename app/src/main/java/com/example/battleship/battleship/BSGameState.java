@@ -17,7 +17,7 @@ public class BSGameState extends GameState {
     public int getHumanPlayerHits() {
         return humanPlayerHits;
     }
-
+    public boolean getCPUhasPlaced(){ return cpuHasPlaced;  }
     public int getComputerPlayerHits() {
         return computerPlayerHits;
     }
