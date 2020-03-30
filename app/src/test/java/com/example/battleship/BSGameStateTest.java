@@ -7,72 +7,71 @@ import static org.junit.Assert.*;
 public class BSGameStateTest {
 
     @Test
-    public boolean placeShip(int length, int x, int y, int orientation) {
+    public void placeShip(int length, int x, int y, int orientation) {
 
         if (orientation == 0) {
             if (length + y < 9) {
-                return false;
+
             }
         }
         if (orientation == 1) {
             if (length + x < 9) {
-                return false;
+
             }
         }
         for (int i = 0; i < length; i++) {
             if (humanPlayerBoard[x][y] != BSGameState.board.water.ordinal()) {
-                return false;
+
             }
         }
         for (int i = 0; i < length; i++) {
             humanPlayerBoard[x][y] = BSGameState.board.ship.ordinal();
         }
 
-        return true;
+
     }
 
     @Test
-    public boolean fireHumanPlayer(int x, int y){
+    public void fireHumanPlayer(int x, int y){
         if(computerPlayerBoard[x][y] == BSGameState.board.water.ordinal()) {
             computerPlayerBoard[x][y] = BSGameState.board.missed.ordinal();
-            return true;
+
         }
         if (computerPlayerBoard[x][y] == BSGameState.board.ship.ordinal()) {
             computerPlayerBoard[x][y] = BSGameState.board.hit.ordinal();
             humanPlayerHits++;
         }
 
-        return false;
+
     }
 
     @Test
-    public boolean fireComputerPlayer(int x, int y){
+    public void fireComputerPlayer(int x, int y) throws Exception{
         BSGameState bs =  new BSGameState();
-        assertEquals(bs.getHumanPlayerBoard(), BSGameState.board.water.ordinal());
-        assertEquals(bs)
-        if(humanPlayerBoard[x][y] == BSGameState.board.water.ordinal()) {
-            humanPlayerBoard[x][y] = BSGameState.board.missed.ordinal();
-            return true;
+        assertEquals(bs.humanPlayerBoard[x][y], BSGameState.board.water.ordinal());
+        assertEquals(x, 1);
+        assertEquals(y, 1);
+        if(bs.humanPlayerBoard[x][y] == BSGameState.board.water.ordinal()) {
+            bs.humanPlayerBoard[x][y] = BSGameState.board.missed.ordinal();
         }
-        if (humanPlayerBoard[x][y] == BSGameState.board.ship.ordinal()) {
-            humanPlayerBoard[x][y] = BSGameState.board.hit.ordinal();
-            computerPlayerHits++;
+        if (bs.humanPlayerBoard[x][y] == BSGameState.board.ship.ordinal()) {
+            bs.humanPlayerBoard[x][y] = BSGameState.board.hit.ordinal();
+            bs.computerPlayerHits++;
         }
-        return false;
     }
 
     @Test
-    public int winner() throws Exception{
+    public void winner() throws Exception{
         BSGameState bs =  new BSGameState();
-        assertEquals(bs.getHumanPlayerHits(), 12);
-        assertEquals(bs.getComputerPlayerHits(), 17);
-        if(bs.getHumanPlayerHits() == 17) {
-            return 1;
+        assertEquals(bs.humanPlayerHits, 12);
+        assertEquals(bs.computerPlayerHits, 17);
+        if(bs.humanPlayerHits == 17) {
+
         }
-        if(bs.getComputerPlayerHits() == 17){
-            return 2;
+        if(bs.computerPlayerHits == 17){
+
         }
-        return 0;
+
     }
 
     @Test

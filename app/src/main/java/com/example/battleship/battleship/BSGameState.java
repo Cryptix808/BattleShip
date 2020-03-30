@@ -5,29 +5,14 @@ import com.example.battleship.GameFramework.infoMessage.GameState;
 public class BSGameState extends GameState {
     public enum board { water, missed, hit, ship }
 
-    private int[][] humanPlayerBoard;
-    private int[][] computerPlayerBoard;
+    public int[][] humanPlayerBoard;
+    public int[][] computerPlayerBoard;
     private int player;
 
-    int humanPlayerHits;
-    int computerPlayerHits;
+    public int humanPlayerHits;
+    public int computerPlayerHits;
     boolean cpuHasPlaced;
     // inital
-
-    public int getHumanPlayerHits() {
-        return humanPlayerHits;
-    }
-
-    public int getComputerPlayerHits() {
-        return computerPlayerHits;
-    }
-
-    public int[][] getHumanPlayerBoard(){
-        return humanPlayerBoard;
-    }
-    public int[][] getComputerPlayerBoard(){
-        return computerPlayerBoard;
-    }
 
     public BSGameState(){
         humanPlayerBoard = new int[10][10];
@@ -147,7 +132,9 @@ public class BSGameState extends GameState {
         }
         return false;
     }
-    public
+    public int getfireComputerPlayer(int x, int y){
+        return x, y;
+    }
 
     public int getNextPlayer() {
         if (player == 1) {
