@@ -29,11 +29,13 @@ public class BSHumanPlayer extends GameHumanPlayer implements Button.OnClickList
      * @param name the name of the player
      */
     public BSHumanPlayer(String name) {
+
         super(name);
     }
 
     //Getter for the GUI
     public View getView(){
+
         return boardView;
     }
 
@@ -41,6 +43,12 @@ public class BSHumanPlayer extends GameHumanPlayer implements Button.OnClickList
     @Override
     public void onClick(View button) {
         if(button.getId() == R.id.startButton) {
+            game.sendAction(new PlayBSAction(this));
+            boardView.invalidate();
+            return;
+        }
+        if(button.getId() == R.id.next){
+            game.sendAction(new BSFire(this));
             boardView.invalidate();
             return;
         }
@@ -49,6 +57,7 @@ public class BSHumanPlayer extends GameHumanPlayer implements Button.OnClickList
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
+
         return false;
     }
 
@@ -98,8 +107,8 @@ public class BSHumanPlayer extends GameHumanPlayer implements Button.OnClickList
     }
 
     private int locatePlace(float x, float y) {
-
         return 0;
+
     }
 
     //Registers the given listener
@@ -129,6 +138,7 @@ public class BSHumanPlayer extends GameHumanPlayer implements Button.OnClickList
 
     public int getPlayerID(){
         return playerID;
+
     }
 
 

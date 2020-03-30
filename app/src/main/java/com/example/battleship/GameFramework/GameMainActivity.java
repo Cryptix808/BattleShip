@@ -32,6 +32,7 @@ import com.example.battleship.GameFramework.utilities.IPCoder;
 import com.example.battleship.GameFramework.utilities.Logger;
 import com.example.battleship.GameFramework.utilities.MessageBox;
 import com.example.battleship.R;
+import com.example.battleship.battleship.BSLocalGame;
 
 /**
  * class GameMainActivity
@@ -122,7 +123,7 @@ public abstract class GameMainActivity extends Activity implements
      * @return a new, game-specific instance of a sub-class of the LocalGame
      *         class.
      */
-    public abstract LocalGame createLocalGame();
+    public abstract BSLocalGame createLocalGame();
 
     /**
      * Creates a "proxy" game that acts as an intermediary between a local
@@ -149,7 +150,7 @@ public abstract class GameMainActivity extends Activity implements
      * "main" for the game framework
      */
     @Override
-    public final void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         //Set Context for Toast Logging
@@ -288,7 +289,7 @@ public abstract class GameMainActivity extends Activity implements
         // until further down so that we do not attempt to make the
         // network connection until other errors are checked)
         if (config.isLocal()) { // local game
-            game = createLocalGame();
+            game = (Game) createLocalGame();
             // verify we have a game
             if (game == null) {
                 return Resources.getSystem().getString(R.string.Game_Creation_Error_Msg);
