@@ -7,21 +7,28 @@ public class BSGameState extends GameState {
 
     private int[][] humanPlayerBoard;
     private int[][] computerPlayerBoard;
+    private int player;
 
     int humanPlayerHits;
     int computerPlayerHits;
-
     boolean cpuHasPlaced;
-
-    int patrolBoat = 2;
-    int destroyer = 3;
-    int submarine = 3;
-    int battleship = 4;
-    int aircraftCarrier = 5;
-    int horizontal = 0;
-    int vertical = 1;
-
     // inital
+
+    public int getHumanPlayerHits() {
+        return humanPlayerHits;
+    }
+
+    public int getComputerPlayerHits() {
+        return computerPlayerHits;
+    }
+
+    public int[][] getHumanPlayerBoard(){
+        return humanPlayerBoard;
+    }
+    public int[][] getComputerPlayerBoard(){
+        return computerPlayerBoard;
+    }
+
     public BSGameState(){
         humanPlayerBoard = new int[10][10];
         computerPlayerBoard = new int[10][10];
@@ -31,6 +38,8 @@ public class BSGameState extends GameState {
                 computerPlayerBoard[i][j] = board.water.ordinal();
             }
         }
+        humanPlayerHits = 0;
+        computerPlayerHits = 0;
         cpuHasPlaced = false;
     }
 
@@ -114,7 +123,7 @@ public class BSGameState extends GameState {
         return true;
     }
 
-    public boolean firehumanPlayer(int x, int y){
+    public boolean fireHumanPlayer(int x, int y){
         if(computerPlayerBoard[x][y] == board.water.ordinal()) {
             computerPlayerBoard[x][y] = board.missed.ordinal();
             return true;
@@ -127,7 +136,7 @@ public class BSGameState extends GameState {
         return false;
     }
 
-    public boolean firecomputerPlayer(int x, int y){
+    public boolean fireComputerPlayer(int x, int y){
         if(humanPlayerBoard[x][y] == board.water.ordinal()) {
             humanPlayerBoard[x][y] = board.missed.ordinal();
             return true;
@@ -138,12 +147,29 @@ public class BSGameState extends GameState {
         }
         return false;
     }
+    public
 
-    public int winner() {
-        if(humanPlayerHits == 14) {
+    public int getNextPlayer() {
+        if (player == 1) {
+            return 0;
+        }
+        if (player == 0) {
             return 1;
         }
-        if(computerPlayerHits == 14){
+        return player;
+    }
+    public int getPlayer() {
+        return player;
+    }
+    public void setPlayer(int player) {
+        this.player = player;
+    }
+
+    public int winner() {
+        if(humanPlayerHits == 17) {
+            return 1;
+        }
+        if(computerPlayerHits == 17){
             return 2;
         }
         return 0;
