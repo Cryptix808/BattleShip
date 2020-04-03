@@ -16,12 +16,14 @@ import java.util.List;
 
 public class BSHumanPlayer extends GameHumanPlayer implements Button.OnClickListener, SurfaceView.OnTouchListener, Serializable {
 
+    private Button startButton = null;
+    private Button doneButton = null;
+
     private final List<BoardTouchListener> listeners = new ArrayList<>();
     private GameMainActivity myActivity;
     private int playerID = getPlayerID();
     private BoardView boardView;
     private BSGameState bss;
-    private Button startButton;
 
     /**
      * constructor
@@ -35,7 +37,6 @@ public class BSHumanPlayer extends GameHumanPlayer implements Button.OnClickList
 
     //Getter for the GUI
     public View getView(){
-
         return boardView;
     }
 
@@ -48,7 +49,7 @@ public class BSHumanPlayer extends GameHumanPlayer implements Button.OnClickList
             return;
         }
         if(button.getId() == R.id.next){
-            game.sendAction(new BSFire(this));
+            game.sendAction(new BSFire(this, 8, 5));
             boardView.invalidate();
             return;
         }
@@ -57,18 +58,34 @@ public class BSHumanPlayer extends GameHumanPlayer implements Button.OnClickList
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
+        /*for(int i = 0; i <= Board.length; i++){
+            if(){
+
+            }
+            else if(){
+
+            }
+            else{
+
+            }
+
+
+
+        }
+        */
 
         return false;
     }
 
     @Override
     public View getTopView() {
-        return null;
+        return boardView;
     }
 
     @Override
     public void receiveInfo(GameInfo info) {
         if(info instanceof BSGameState){
+
 
         }
         else{
@@ -80,9 +97,16 @@ public class BSHumanPlayer extends GameHumanPlayer implements Button.OnClickList
     @Override
     public void setAsGui(GameMainActivity activity) {
         myActivity = activity;
+
         myActivity.setContentView(R.layout.setup_phase);
-        startButton = myActivity.findViewById(R.id.startButton);
+
+
+        startButton = myActivity.findViewById(R.id.playGameButton);
+        doneButton = myActivity.findViewById(R.id.next);
+
         startButton.setOnClickListener(this);
+        doneButton.setOnClickListener(this);
+
 
 
     }

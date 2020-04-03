@@ -20,6 +20,11 @@ public class MainActivity extends GameMainActivity implements Serializable {
         ArrayList<GamePlayerType> playerTypes = new ArrayList<GamePlayerType>();
 
         //Two Players: human and computer
+        playerTypes.add(new GamePlayerType("Human") {
+            public GamePlayer createPlayer(String name) {
+                return new BSHumanPlayer(name);
+            }
+        });
         playerTypes.add(new GamePlayerType("Dumb AI") {
             public GamePlayer createPlayer(String name){
                 return new BSHumanPlayer(name);

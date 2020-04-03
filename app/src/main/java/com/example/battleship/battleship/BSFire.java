@@ -7,24 +7,19 @@ import java.io.Serializable;
 
 public class BSFire extends GameAction implements Serializable {
 
-
     /**
      * constructor for GameAction
      *
      * @param player the player who created the action
      */
-    public BSFire(GamePlayer player) {
-        super(player);
-    }
 
     int x;
     int y;
 
-    //constructor
-    public void Fire(int x, int y){
+    public BSFire(GamePlayer player, int x, int y) {
+        super(player);
         this.x = x;
         this.y = y;
-
-
     }
+
 }

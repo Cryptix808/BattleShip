@@ -12,6 +12,8 @@ public class BSGameState extends GameState {
     public int humanPlayerHits;
     public int computerPlayerHits;
     boolean cpuHasPlaced;
+    boolean startGame;
+    boolean inGame;
     // inital
 
     public int getHumanPlayerHits() {
@@ -21,12 +23,15 @@ public class BSGameState extends GameState {
     public int getComputerPlayerHits() {
         return computerPlayerHits;
     }
-
+    public int getPlayer(){return player;}
     public int[][] getHumanPlayerBoard(){
         return humanPlayerBoard;
     }
     public int[][] getComputerPlayerBoard(){
         return computerPlayerBoard;
+    }
+    public void setPlayer(int player) {
+        this.player = player;
     }
 
     public BSGameState(){
@@ -41,6 +46,8 @@ public class BSGameState extends GameState {
         humanPlayerHits = 0;
         computerPlayerHits = 0;
         cpuHasPlaced = false;
+        startGame = false;
+        inGame = false;
     }
 
     // placing ships
@@ -52,6 +59,8 @@ public class BSGameState extends GameState {
             }
         }
         this.cpuHasPlaced = cpuHasPlaced;
+        startGame = false;
+        inGame = false;
     }
 
     // starting game
@@ -65,6 +74,7 @@ public class BSGameState extends GameState {
         // initalize rest of data
         humanPlayerHits = 0;
         computerPlayerHits = 0;
+        inGame = true;
     }
 
     // in game
@@ -78,6 +88,7 @@ public class BSGameState extends GameState {
         // initalize rest of data
         humanPlayerHits = bs.humanPlayerHits;
         computerPlayerHits = bs.computerPlayerHits;
+        inGame = true;
     }
 
     public boolean placeShip(int length, int x, int y, int orientation) {
@@ -105,6 +116,9 @@ public class BSGameState extends GameState {
     }
 
     public boolean placeComputerShipsDumb(int pattern) {
+        if(cpuHasPlaced){
+            return false;
+        }
         switch(pattern){
             default:
                 for (int i = 4; i < 9; i++) {
@@ -158,12 +172,6 @@ public class BSGameState extends GameState {
         }
         return player;
     }
-    public int getPlayer() {
-        return player;
-    }
-    public void setPlayer(int player) {
-        this.player = player;
-    }
 
     public int winner() {
         if(humanPlayerHits == 17) {
@@ -174,5 +182,7 @@ public class BSGameState extends GameState {
         }
         return 0;
     }
+
+    public int getWinner() {return winner();}
 
 }
