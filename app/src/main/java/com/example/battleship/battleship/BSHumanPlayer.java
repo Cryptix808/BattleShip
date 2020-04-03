@@ -49,7 +49,7 @@ public class BSHumanPlayer extends GameHumanPlayer implements Button.OnClickList
             return;
         }
         if(button.getId() == R.id.next){
-            game.sendAction(new BSFire(this));
+            game.sendAction(new BSFire(this, 8, 5));
             boardView.invalidate();
             return;
         }
