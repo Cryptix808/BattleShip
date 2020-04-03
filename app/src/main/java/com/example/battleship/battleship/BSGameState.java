@@ -3,6 +3,8 @@ package com.example.battleship.battleship;
 import com.example.battleship.GameFramework.infoMessage.GameState;
 
 public class BSGameState extends GameState {
+
+    int count;
     public enum board { water, missed, hit, ship }
 
     public int[][] humanPlayerBoard;

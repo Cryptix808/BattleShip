@@ -1,5 +1,6 @@
 package com.example.battleship.battleship;
 
+import android.graphics.Color;
 import android.view.MotionEvent;
 import android.view.SurfaceView;
 import android.view.View;
@@ -18,6 +19,7 @@ public class BSHumanPlayer extends GameHumanPlayer implements Button.OnClickList
 
     private Button startButton = null;
     private Button doneButton = null;
+    private Button fireButton = null;
 
     private final List<BoardTouchListener> listeners = new ArrayList<>();
     private GameMainActivity myActivity;
@@ -58,21 +60,7 @@ public class BSHumanPlayer extends GameHumanPlayer implements Button.OnClickList
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
-        /*for(int i = 0; i <= Board.length; i++){
-            if(){
 
-            }
-            else if(){
-
-            }
-            else{
-
-            }
-
-
-
-        }
-        */
 
         return false;
     }
@@ -82,16 +70,32 @@ public class BSHumanPlayer extends GameHumanPlayer implements Button.OnClickList
         return boardView;
     }
 
+    //Recieves info from the local game
     @Override
     public void receiveInfo(GameInfo info) {
         if(info instanceof BSGameState){
-
+            if(((BSGameState) info).computerPlayerBoard != null){
+                bss = new BSGameState(((BSGameState) info).humanPlayerBoard, ((BSGameState) info).computerPlayerBoard);
+            }
 
         }
         else{
             bss = new BSGameState((BSGameState) info);
 
         }
+        flash(Color.RED, 10);
+    }
+
+    public void initGame(){
+        myActivity.setContentView(R.layout.setup_phase);
+
+        boardView = myActivity.findViewById(R.id.humanBoard);
+        doneButton = myActivity.findViewById(R.id.next);
+
+        boardView.setOnTouchListener(this);
+        doneButton.setOnClickListener(this);
+
+
     }
 
     @Override
@@ -104,8 +108,12 @@ public class BSHumanPlayer extends GameHumanPlayer implements Button.OnClickList
         startButton = myActivity.findViewById(R.id.playGameButton);
         doneButton = myActivity.findViewById(R.id.next);
 
+
         startButton.setOnClickListener(this);
         doneButton.setOnClickListener(this);
+
+        bss = new BSGameState();
+        setPlayer(bss.count);
 
 
 
@@ -162,6 +170,11 @@ public class BSHumanPlayer extends GameHumanPlayer implements Button.OnClickList
 
     public int getPlayerID(){
         return playerID;
+
+    }
+
+    public void setPlayer(int player){
+        this.playerID = player;
 
     }
 

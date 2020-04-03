@@ -27,7 +27,7 @@ public class MainActivity extends GameMainActivity implements Serializable {
         });
         playerTypes.add(new GamePlayerType("Dumb AI") {
             public GamePlayer createPlayer(String name){
-                return new BSHumanPlayer(name);
+                return new BSEasyAI (name);
             }
         });
 
