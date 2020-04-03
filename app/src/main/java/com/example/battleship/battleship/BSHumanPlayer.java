@@ -58,7 +58,7 @@ public class BSHumanPlayer extends GameHumanPlayer implements Button.OnClickList
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
-        for(int i = 0; i <= Board.length; i++){
+        /*for(int i = 0; i <= Board.length; i++){
             if(){
 
             }
@@ -66,10 +66,14 @@ public class BSHumanPlayer extends GameHumanPlayer implements Button.OnClickList
 
             }
             else{
-                
+
             }
 
+
+
         }
+        */
+
         return false;
     }
 
