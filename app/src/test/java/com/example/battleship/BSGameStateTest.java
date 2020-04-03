@@ -28,6 +28,7 @@ public class BSGameStateTest {
             for (int j = 0; j < 10; j++) {
                 assertEquals(BSGameState.board.water.ordinal(), bs.humanPlayerBoard[i][j]);
                 //if the game were played, the real values would show instead of random values
+
             }
         }
 
