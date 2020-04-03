@@ -24,9 +24,12 @@ public class BSGameStateTest {
 
         // public boolean placeShip(int length, int x, int y, int orientation) throws Exception {
         BSGameState bs = new BSGameState();
-        assertEquals(BSGameState.board.water.ordinal(), bs.humanPlayerBoard);
-        //if the game were played, the real values would show instead of random values
-
+        for(int i = 0;i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                assertEquals(BSGameState.board.water.ordinal(), bs.humanPlayerBoard[i][j]);
+                //if the game were played, the real values would show instead of random values
+            }
+        }
 
 
     }
@@ -37,9 +40,12 @@ public class BSGameStateTest {
 
 
         BSGameState bs = new BSGameState();
-        assertEquals(BSGameState.board.water.ordinal(), bs.computerPlayerBoard);
-        //if game were played, real values would show instead of random values
-
+        for(int i = 0;i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                assertEquals(BSGameState.board.water.ordinal(), bs.computerPlayerBoard[i][j]);
+                //if game were played, real values would show instead of random values
+            }
+        }
 
 
     }
@@ -47,10 +53,12 @@ public class BSGameStateTest {
     @Test
     public void fireComputerPlayer() throws Exception{
         BSGameState bs =  new BSGameState();
-
-        assertEquals(BSGameState.board.water.ordinal(), bs.humanPlayerBoard);
-        //if game were played, real values would be displayed instead of random ones
-
+        for(int i = 0;i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                assertEquals(BSGameState.board.water.ordinal(), bs.humanPlayerBoard[i][j]);
+                //if game were played, real values would be displayed instead of random ones
+            }
+        }
 
     }
 
