@@ -16,6 +16,7 @@ public class BSGameState extends GameState {
     boolean cpuHasPlaced;
     boolean startGame;
     boolean inGame;
+    boolean isAlpha;
     // inital
 
     public int getHumanPlayerHits() {
@@ -51,6 +52,66 @@ public class BSGameState extends GameState {
         startGame = false;
         inGame = false;
     }
+    public BSGameState(boolean alpha){
+        isAlpha = true;
+        humanPlayerBoard = new int[10][10];
+        computerPlayerBoard = new int[10][10];
+
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                humanPlayerBoard[i][j] = board.water.ordinal();
+                computerPlayerBoard[i][j] = board.water.ordinal();
+            }
+        }
+        // initalize rest of data
+        humanPlayerHits = 0;
+        computerPlayerHits = 0;
+        inGame = true;
+
+        //carrier
+        for (int i = 4; i < 9; i++) {
+            humanPlayerBoard[i][3] = board.ship.ordinal();
+        }
+        //submarine
+        for (int i = 7; i <= 9; i++){
+            humanPlayerBoard[9][i] = board.ship.ordinal();
+        }
+        //destroyer
+        for (int i = 5; i < 7; i++){
+            humanPlayerBoard[5][i] = board.ship.ordinal();
+        }
+        //battleship
+        for (int j = 4; j < 8; j++){
+            humanPlayerBoard[j][2] = board.ship.ordinal();
+        }
+        //cruiser
+        for (int i = 0; i < 3; i++){
+            humanPlayerBoard[0][i] = board.ship.ordinal();
+        }
+
+        //carrier
+        for (int i = 4; i < 9; i++) {
+            computerPlayerBoard[i][2] = board.ship.ordinal();
+        }
+        //submarine
+        for (int i = 7; i <= 9; i++){
+            computerPlayerBoard[i][9] = board.ship.ordinal();
+        }
+        //destroyer
+        for (int i = 5; i < 7; i++){
+            computerPlayerBoard[i][5] = board.ship.ordinal();
+        }
+        //battleship
+        for (int j = 4; j < 8; j++){
+            computerPlayerBoard[2][j] = board.ship.ordinal();
+        }
+        //cruiser
+        for (int i = 0; i < 3; i++){
+            computerPlayerBoard[i][0] = board.ship.ordinal();
+        }
+
+    }
+
 
     // placing ships
     public BSGameState(int[][] humanPlayerBoard, int [][] computerPlayerBoard, boolean cpuHasPlaced) {
@@ -94,7 +155,6 @@ public class BSGameState extends GameState {
         computerPlayerHits = bs.computerPlayerHits;
         inGame = true;
     }
-
     public boolean placeShip(int length, int x, int y, int orientation) {
 
         if (orientation == 0) {
@@ -125,13 +185,26 @@ public class BSGameState extends GameState {
         }
         switch(pattern){
             default:
+                //carrier
                 for (int i = 4; i < 9; i++) {
                     computerPlayerBoard[i][2] = board.ship.ordinal();
                 }
-                for (int i = 2; i < 5; i++){
-                    computerPlayerBoard[8][i] = board.ship.ordinal();
+                //submarine
+                for (int i = 7; i <= 9; i++){
+                    computerPlayerBoard[i][9] = board.ship.ordinal();
                 }
-
+                //destroyer
+                for (int i = 5; i < 7; i++){
+                    computerPlayerBoard[i][5] = board.ship.ordinal();
+                }
+                //battleship
+                for (int j = 4; j < 8; j++){
+                    computerPlayerBoard[2][j] = board.ship.ordinal();
+                }
+                //cruiser
+                for (int i = 0; i < 3; i++){
+                    computerPlayerBoard[i][0] = board.ship.ordinal();
+                }
         }
         return true;
     }

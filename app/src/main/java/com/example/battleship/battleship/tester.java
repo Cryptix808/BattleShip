@@ -45,8 +45,8 @@ public class tester extends SurfaceView {
         // draw grid
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
-                bs.humanPlayerBoard[i][j] = bs.board.water.ordinal();
-                bs.computerPlayerBoard[i][j] = bs.board.water.ordinal();
+                bs.humanPlayerBoard[i][j] = BSGameState.board.water.ordinal();
+                bs.computerPlayerBoard[i][j] = BSGameState.board.water.ordinal();
             }
         }
     }

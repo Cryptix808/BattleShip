@@ -45,11 +45,13 @@ public class BSHumanPlayer extends GameHumanPlayer implements Button.OnClickList
 
     @Override
     public void onClick(View button) {
+        /**
         if(button.getId() == R.id.startButton) {
             game.sendAction(new PlayBSAction(this));
             boardView.invalidate();
             return;
         }
+         */
         if(button.getId() == R.id.next){
             game.sendAction(new BSFire(this, 8, 5));
             boardView.invalidate();
@@ -88,16 +90,11 @@ public class BSHumanPlayer extends GameHumanPlayer implements Button.OnClickList
         tester = myActivity.findViewById(R.id.testing);
         tester.setOnTouchListener(this);
 
-
-
         //startButton = myActivity.findViewById(R.id.playGameButton);
         //doneButton = myActivity.findViewById(R.id.next);
 
         //startButton.setOnClickListener(this);
         //doneButton.setOnClickListener(this);
-
-
-
     }
 
     //Overridden to detect a board touch. When board is touched corresponding place is identified

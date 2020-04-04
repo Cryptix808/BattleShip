@@ -11,7 +11,7 @@ public class BSLocalGame extends LocalGame{
     BSGameState bs;
 
     public BSLocalGame(){
-        bs = new BSGameState();
+        bs = new BSGameState(true);
     }
 
     protected boolean canMove(int playerCode){ return playerCode == bs.getPlayer(); }
@@ -25,20 +25,14 @@ public class BSLocalGame extends LocalGame{
         //get if cpu or player
         boolean isPlayer = true;
 
-        if (action instanceof PlayBSAction) {
-            if (isPlayer) {
-
-            } else {
-
-            }
-        } else if (action instanceof BSFire) {
+         if (action instanceof BSFire) {
             if (isPlayer) {
                 return bs.fireHumanPlayer(((BSFire) action).x, ((BSFire) action).y);
             } else {
                 return bs.fireComputerPlayer(((BSFire) action).x, ((BSFire) action).y);
             }
         }
-        else if (action instanceof BSPlaceShip) {
+        else if (action instanceof BSPlaceShip ) {
 
         }
             return false;
