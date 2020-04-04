@@ -18,6 +18,7 @@ public class BSHumanPlayer extends GameHumanPlayer implements Button.OnClickList
 
     private Button startButton = null;
     private Button doneButton = null;
+    private Button fireButton = null;
 
     private final List<BoardTouchListener> listeners = new ArrayList<>();
     private GameMainActivity myActivity;
@@ -70,6 +71,7 @@ public class BSHumanPlayer extends GameHumanPlayer implements Button.OnClickList
         return boardView;
     }
 
+    //Recieves info from the local game
     @Override
     public void receiveInfo(GameInfo info) {
         if(info instanceof BSGameState){
