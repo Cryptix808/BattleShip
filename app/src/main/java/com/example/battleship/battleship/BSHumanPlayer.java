@@ -75,12 +75,8 @@ public class BSHumanPlayer extends GameHumanPlayer implements Button.OnClickList
     @Override
     public void receiveInfo(GameInfo info) {
         if(info instanceof BSGameState){
-
-
-        }
-        else{
-            bss = new BSGameState((BSGameState) info);
-
+            bss = ((BSGameState) info);
+            //give info to draw class
         }
     }
 

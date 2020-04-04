@@ -9,6 +9,7 @@ import android.view.SurfaceView;
 
 public class tester extends SurfaceView {
     float x, y;
+    BSGameState bs;
     Paint white = new Paint(Color.WHITE);
 
     public tester(Context context){
@@ -36,5 +37,21 @@ public class tester extends SurfaceView {
         canvas.drawText(" ", 0, 0, white);
         canvas.drawText("x\t: \t" + (int) x, 100,100, white);
         canvas.drawText("y\t: \t" + (int) y, 100,200, white);
+
+        drawGrid(canvas);
+    }
+
+    protected void drawGrid(Canvas c) {
+        // draw grid
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                bs.humanPlayerBoard[i][j] = bs.board.water.ordinal();
+                bs.computerPlayerBoard[i][j] = bs.board.water.ordinal();
+            }
+        }
+    }
+
+    public void getBs(BSGameState g) {
+        bs = g;
     }
 }
