@@ -25,6 +25,8 @@ public class BoardView extends View implements Serializable {
     private final Paint whitePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private final Paint boardLinePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
+
+
     float x;
     float y;
 
