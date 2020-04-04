@@ -52,6 +52,8 @@ public class BSGameState extends GameState {
 
     // placing ships
     public BSGameState(int[][] humanPlayerBoard, int [][] computerPlayerBoard, boolean cpuHasPlaced) {
+        this.humanPlayerBoard = new int[10][10];
+        this.computerPlayerBoard = new int[10][10];
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
                 this.humanPlayerBoard[i][j] = humanPlayerBoard[i][j];
@@ -140,10 +142,12 @@ public class BSGameState extends GameState {
     public boolean fireHumanPlayer(int x, int y){
         if(computerPlayerBoard[x][y] == board.water.ordinal()) {
             computerPlayerBoard[x][y] = board.missed.ordinal();
+            //draw a white dot on that spot
             return true;
         }
         if (computerPlayerBoard[x][y] == board.ship.ordinal()) {
             computerPlayerBoard[x][y] = board.hit.ordinal();
+            //draw
             humanPlayerHits++;
         }
 

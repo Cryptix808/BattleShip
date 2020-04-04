@@ -4,6 +4,7 @@ import com.example.battleship.GameFramework.GameMainActivity;
 import com.example.battleship.GameFramework.GamePlayer;
 import com.example.battleship.GameFramework.gameConfiguration.GameConfig;
 import com.example.battleship.GameFramework.gameConfiguration.GamePlayerType;
+import com.example.battleship.battleship.BSEasyAI;
 import com.example.battleship.battleship.BSHumanPlayer;
 import com.example.battleship.battleship.BSLocalGame;
 
@@ -27,7 +28,7 @@ public class MainActivity extends GameMainActivity implements Serializable {
         });
         playerTypes.add(new GamePlayerType("Dumb AI") {
             public GamePlayer createPlayer(String name){
-                return new BSHumanPlayer(name);
+                return new BSEasyAI(name);
             }
         });
 

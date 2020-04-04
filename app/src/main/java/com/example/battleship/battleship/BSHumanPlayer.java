@@ -24,6 +24,7 @@ public class BSHumanPlayer extends GameHumanPlayer implements Button.OnClickList
     private int playerID = getPlayerID();
     private BoardView boardView;
     private BSGameState bss;
+    private tester tester;
 
     /**
      * constructor
@@ -58,22 +59,9 @@ public class BSHumanPlayer extends GameHumanPlayer implements Button.OnClickList
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
-        /*for(int i = 0; i <= Board.length; i++){
-            if(){
-
-            }
-            else if(){
-
-            }
-            else{
-
-            }
-
-
-
-        }
-        */
-
+        tester.x = event.getX();
+        tester.y = event.getY();
+        v.postInvalidate();
         return false;
     }
 
@@ -97,15 +85,18 @@ public class BSHumanPlayer extends GameHumanPlayer implements Button.OnClickList
     @Override
     public void setAsGui(GameMainActivity activity) {
         myActivity = activity;
+        myActivity.setContentView(R.layout.tester);
 
-        myActivity.setContentView(R.layout.setup_phase);
+        tester = myActivity.findViewById(R.id.testing);
+        tester.setOnTouchListener(this);
 
 
-        startButton = myActivity.findViewById(R.id.playGameButton);
-        doneButton = myActivity.findViewById(R.id.next);
 
-        startButton.setOnClickListener(this);
-        doneButton.setOnClickListener(this);
+        //startButton = myActivity.findViewById(R.id.playGameButton);
+        //doneButton = myActivity.findViewById(R.id.next);
+
+        //startButton.setOnClickListener(this);
+        //doneButton.setOnClickListener(this);
 
 
 

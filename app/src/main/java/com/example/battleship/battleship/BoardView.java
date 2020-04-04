@@ -15,7 +15,7 @@ import java.util.List;
 public class BoardView extends View implements Serializable {
 
 
-    private final int boardColor = Color.argb(0,0255,255,255);
+    private final int boardColor = Color.argb(0,255,255,255);
     private final int redColor = Color.rgb(255,69,0);
     private final int blackColor = Color.rgb(0,0,0);
     private final int whiteColor = Color.rgb(255,255,255);
@@ -25,9 +25,8 @@ public class BoardView extends View implements Serializable {
     private final Paint whitePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private final Paint boardLinePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
-    int[][] p1Coord = new int[10][10];
-    int[][] p2Coord = new int[10][10];
-    int[][] gameCoord = new int[10][10];
+    float x;
+    float y;
 
     //Size of the board
     private int boardSize;
@@ -61,11 +60,12 @@ public class BoardView extends View implements Serializable {
     @Override
     protected void onDraw(Canvas canvas){
         super.onDraw(canvas);
-        drawP1Ships(canvas);
-        drawBoard(canvas);
-        drawGrid(canvas);
+        canvas.drawText(x + " , " + y, 0,100, whitePaint);
+        //drawP1Ships(canvas);
+        //drawBoard(canvas);
+        //drawGrid(canvas);
     }
-
+/*
     private void drawP1Ships(Canvas canvas){
         if(p1Coord != null){
             for(int i = 0; i < p1Coord.length; i++){
@@ -158,5 +158,5 @@ public class BoardView extends View implements Serializable {
 
     }
 
-
+*/
 }
