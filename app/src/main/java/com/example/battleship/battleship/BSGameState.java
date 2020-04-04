@@ -1,8 +1,20 @@
 package com.example.battleship.battleship;
 
+import android.graphics.Color;
+import android.graphics.Paint;
+
 import com.example.battleship.GameFramework.infoMessage.GameState;
 
+import static android.graphics.Color.RED;
+import static android.graphics.Color.WHITE;
+
+
 public class BSGameState extends GameState {
+
+
+
+    int r = Color.RED;
+    int w = Color.WHITE;
 
     int count;
     public enum board { water, missed, hit, ship }
@@ -176,6 +188,9 @@ public class BSGameState extends GameState {
             humanPlayerBoard[x][y] = board.ship.ordinal();
         }
 
+
+
+
         return true;
     }
 
@@ -215,14 +230,20 @@ public class BSGameState extends GameState {
     }
 
     public boolean fireHumanPlayer(int x, int y){
+
+
         if(computerPlayerBoard[x][y] == board.water.ordinal()) {
             computerPlayerBoard[x][y] = board.missed.ordinal();
-            //draw a white dot on that spot
+            //draw a white dot on that spot if it's a hit
+            computerPlayerBoard[x][y] = w;
+
             return true;
         }
         if (computerPlayerBoard[x][y] == board.ship.ordinal()) {
             computerPlayerBoard[x][y] = board.hit.ordinal();
-            //draw
+            //draw a red square if it's a hit
+            computerPlayerBoard[x][y] = r;
+
             humanPlayerHits++;
         }
 
@@ -232,10 +253,16 @@ public class BSGameState extends GameState {
     public boolean fireComputerPlayer(int x, int y){
         if(humanPlayerBoard[x][y] == board.water.ordinal()) {
             humanPlayerBoard[x][y] = board.missed.ordinal();
+            //draw a white dot on that spot if it's a hit
+            computerPlayerBoard[x][y] = w;
+
             return true;
         }
         if (humanPlayerBoard[x][y] == board.ship.ordinal()) {
             humanPlayerBoard[x][y] = board.hit.ordinal();
+            //draw a red square if it's a hit
+            computerPlayerBoard[x][y] = r;
+
             computerPlayerHits++;
         }
         return false;

@@ -8,6 +8,8 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.example.battleship.GameFramework.infoMessage.GameInfo;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +26,8 @@ public class BoardView extends View implements Serializable {
     private final Paint blackPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private final Paint whitePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private final Paint boardLinePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+
+
 
     float x;
     float y;
@@ -64,7 +68,20 @@ public class BoardView extends View implements Serializable {
         //drawP1Ships(canvas);
         //drawBoard(canvas);
         //drawGrid(canvas);
+
+
+
     }
+/*
+protected void receiveInfo(GameInfo info) {
+    if(info instanceof BSGameState) {
+            if(BSGameState.fireHumanPlayer(this,this) == true){
+
+            }
+        }
+    }
+*/
+
 /*
     private void drawP1Ships(Canvas canvas){
         if(p1Coord != null){
