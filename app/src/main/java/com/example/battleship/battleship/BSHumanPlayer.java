@@ -64,6 +64,16 @@ public class BSHumanPlayer extends GameHumanPlayer implements Button.OnClickList
     public boolean onTouch(View v, MotionEvent event) {
         tester.x = event.getX();
         tester.y = event.getY();
+
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                if(tester.x >= 1060 + (73 * i) && tester.x <= 1060 + 70 + (73 * i) &&
+                        tester.y >= 155 + (73 * j) && tester.y <= 155 + 70 + (73 *j)) {
+                    game.sendAction(new BSFire(this, i, j));
+                }
+            }
+        }
+
         v.postInvalidate();
         return false;
     }
@@ -78,7 +88,7 @@ public class BSHumanPlayer extends GameHumanPlayer implements Button.OnClickList
     public void receiveInfo(GameInfo info) {
         if(info instanceof BSGameState){
             bss = ((BSGameState) info);
-            //give info to draw class
+            tester.getBs(bss);
         }
     }
 

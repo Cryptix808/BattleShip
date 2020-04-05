@@ -11,18 +11,13 @@ import static android.graphics.Color.WHITE;
 
 public class BSGameState extends GameState {
 
-
-
-    int r = Color.RED;
-    int w = Color.WHITE;
-
     int count;
     public enum board { water, missed, hit, ship }
 
     public int[][] humanPlayerBoard;
     public int[][] computerPlayerBoard;
     private int player;
-
+    private int turnCode;
     public int humanPlayerHits;
     public int computerPlayerHits;
     boolean cpuHasPlaced;
@@ -39,6 +34,7 @@ public class BSGameState extends GameState {
         return computerPlayerHits;
     }
     public int getPlayer(){return player;}
+    public int getTurnCode(){return turnCode;}
     public int[][] getHumanPlayerBoard(){
         return humanPlayerBoard;
     }
@@ -58,6 +54,7 @@ public class BSGameState extends GameState {
                 computerPlayerBoard[i][j] = board.water.ordinal();
             }
         }
+        player = 0;
         humanPlayerHits = 0;
         computerPlayerHits = 0;
         cpuHasPlaced = false;
@@ -68,7 +65,7 @@ public class BSGameState extends GameState {
         isAlpha = true;
         humanPlayerBoard = new int[10][10];
         computerPlayerBoard = new int[10][10];
-
+        player = 0;
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
                 humanPlayerBoard[i][j] = board.water.ordinal();
@@ -79,7 +76,7 @@ public class BSGameState extends GameState {
         humanPlayerHits = 0;
         computerPlayerHits = 0;
         inGame = true;
-
+        turnCode = 0;
         //carrier
         for (int i = 4; i < 9; i++) {
             humanPlayerBoard[i][3] = board.ship.ordinal();
@@ -142,6 +139,8 @@ public class BSGameState extends GameState {
 
     // starting game
     public BSGameState(int[][] humanPlayerBoard, int [][] computerPlayerBoard) {
+        this.humanPlayerBoard = new int[10][10];
+        this.computerPlayerBoard = new int[10][10];
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
                 this.humanPlayerBoard[i][j] = humanPlayerBoard[i][j];
@@ -156,6 +155,8 @@ public class BSGameState extends GameState {
 
     // in game
     public BSGameState(BSGameState bs) {
+        this.humanPlayerBoard = new int[10][10];
+        this.computerPlayerBoard = new int[10][10];
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
                 this.humanPlayerBoard[i][j] = bs.humanPlayerBoard[i][j];
@@ -163,6 +164,7 @@ public class BSGameState extends GameState {
             }
         }
         // initalize rest of data
+        turnCode = bs.turnCode;
         humanPlayerHits = bs.humanPlayerHits;
         computerPlayerHits = bs.computerPlayerHits;
         inGame = true;
@@ -187,10 +189,6 @@ public class BSGameState extends GameState {
         for (int i = 0; i < length; i++) {
             humanPlayerBoard[x][y] = board.ship.ordinal();
         }
-
-
-
-
         return true;
     }
 
@@ -230,40 +228,31 @@ public class BSGameState extends GameState {
     }
 
     public boolean fireHumanPlayer(int x, int y){
-
-
-        if(computerPlayerBoard[x][y] == board.water.ordinal()) {
+        if(computerPlayerBoard[x][y] == board.water.ordinal() && turnCode == 0) {
             computerPlayerBoard[x][y] = board.missed.ordinal();
-            //draw a white dot on that spot if it's a hit
-            computerPlayerBoard[x][y] = w;
-
+            turnCode = 1;
             return true;
         }
-        if (computerPlayerBoard[x][y] == board.ship.ordinal()) {
+        if (computerPlayerBoard[x][y] == board.ship.ordinal() && turnCode == 0) {
             computerPlayerBoard[x][y] = board.hit.ordinal();
-            //draw a red square if it's a hit
-            computerPlayerBoard[x][y] = r;
-
+            turnCode = 1;
             humanPlayerHits++;
+            return true;
         }
-
         return false;
     }
 
     public boolean fireComputerPlayer(int x, int y){
-        if(humanPlayerBoard[x][y] == board.water.ordinal()) {
+        if(humanPlayerBoard[x][y] == board.water.ordinal() && turnCode == 1) {
             humanPlayerBoard[x][y] = board.missed.ordinal();
-            //draw a white dot on that spot if it's a hit
-            computerPlayerBoard[x][y] = w;
-
+            turnCode = 0;
             return true;
         }
-        if (humanPlayerBoard[x][y] == board.ship.ordinal()) {
+        if (humanPlayerBoard[x][y] == board.ship.ordinal() && turnCode == 1) {
             humanPlayerBoard[x][y] = board.hit.ordinal();
-            //draw a red square if it's a hit
-            computerPlayerBoard[x][y] = r;
-
+            turnCode = 0;
             computerPlayerHits++;
+            return true;
         }
         return false;
     }

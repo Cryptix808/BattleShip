@@ -14,19 +14,13 @@ public class BSLocalGame extends LocalGame{
         bs = new BSGameState(true);
     }
 
-    protected boolean canMove(int playerCode){ return playerCode == bs.getPlayer(); }
+    protected boolean canMove(int playerCode){ return true; }
 
     @Override
     public boolean makeMove(GameAction action) {
-        if (!canMove(action.getPlayer().hashCode())) {
-            return false;
-        }
-
-        //get if cpu or player
-        boolean isPlayer = true;
 
          if (action instanceof BSFire) {
-            if (isPlayer) {
+            if (bs.getTurnCode() == 0) {
                 return bs.fireHumanPlayer(((BSFire) action).x, ((BSFire) action).y);
             } else {
                 return bs.fireComputerPlayer(((BSFire) action).x, ((BSFire) action).y);
@@ -38,6 +32,9 @@ public class BSLocalGame extends LocalGame{
             return false;
     }
         public void sendUpdatedStateTo (GamePlayer p){
+            if (bs == null) {
+                return;
+            }
             if (bs.inGame) {
                 BSGameState BScpy = new BSGameState(bs);
                 p.sendInfo(BScpy);
@@ -59,23 +56,13 @@ public class BSLocalGame extends LocalGame{
     @Override
     protected String checkIfGameOver(){
         if(bs.getWinner() == 1){
-            return ("The human has won");
+            return ("The human has won. ");
         }
         else if(bs.getWinner() == 2){
-            return ("The computer has won");
+            return ("The computer has won. ");
         }
         return null;
     }
 
-    //Tag for logging
     private static final String TAG = "BSLocalGame";
-    // the game's state
-    //protected BSState state;
-
-    // the marks for player 0 and player 1, respectively
-    private final static char[] mark = {'X','O'};
-
-    // the number of moves that have been played so far, used to
-    // determine whether the game is over
-    protected int moveCount;
 }

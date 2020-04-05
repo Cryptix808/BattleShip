@@ -9,9 +9,12 @@ public class BSEasyAI extends GameComputerPlayer {
   @Override
   protected void receiveInfo(GameInfo info) {
     if(info instanceof BSGameState){
-        if(((BSGameState) info).getPlayer() != 0){
+        if(((BSGameState) info).getTurnCode() == 0){
           return;
         }
+    }
+    else {
+      return;
     }
     if(((BSGameState) info).inGame == false){
       game.sendAction(new BSPlaceCPUShip(this, (int)(Math.random() * 6)));
@@ -22,8 +25,8 @@ public class BSEasyAI extends GameComputerPlayer {
     do {
       randX = randomX();
       randY = randomY();
-    } while (((BSGameState) info).humanPlayerBoard[randX][randY] != 0 ||
-    ((BSGameState) info).humanPlayerBoard[randX][randY] != 3);
+    } while (((BSGameState) info).humanPlayerBoard[randX][randY] == 1 ||
+    ((BSGameState) info).humanPlayerBoard[randX][randY] == 2);
 
     sleep(.75);
 
