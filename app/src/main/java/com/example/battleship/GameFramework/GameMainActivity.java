@@ -32,6 +32,7 @@ import com.example.battleship.GameFramework.utilities.IPCoder;
 import com.example.battleship.GameFramework.utilities.Logger;
 import com.example.battleship.GameFramework.utilities.MessageBox;
 import com.example.battleship.R;
+import com.example.battleship.battleship.BSHumanPlayer;
 import com.example.battleship.battleship.BSLocalGame;
 
 /**
@@ -262,13 +263,16 @@ public abstract class GameMainActivity extends Activity implements
             if (guiPlayer != null) {
                 // if there is a GUI player, link it to the activity
                 guiPlayer.gameSetAsGui(this);
+
             }
             else {
                 // if there is no GUI player, set the layout to be one
                 // with a "no GUI" message
                 setContentView(R.layout.game_no_gui);
+
             }
         }
+
     }//onConfigurationChanged
 
     /**
