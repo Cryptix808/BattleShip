@@ -218,6 +218,231 @@ public class BSGameState extends GameState {
                 for (int i = 0; i < 3; i++){
                     computerPlayerBoard[i][0] = board.ship.ordinal();
                 }
+                break;
+            case 1:
+                //carrier
+                for(int i = 0; i < 6; i++){
+                    computerPlayerBoard[i][0] = board.ship.ordinal();
+                }
+                //submarine
+                for(int i = 0; i < 3; i++){
+                    computerPlayerBoard[i][1] = board.ship.ordinal();
+                }
+                //destroyer
+                for(int i = 0; i < 3; i++){
+                    computerPlayerBoard[i][2] = board.ship.ordinal();
+                }
+                //battleship
+                for(int i = 0; i < 5; i++){
+                    computerPlayerBoard[i][3] = board.ship.ordinal();
+                }
+                //cruiser
+                for(int i = 0; i < 4; i++){
+                    computerPlayerBoard[i][4] = board.ship.ordinal();
+                }
+                break;
+            case 2:
+                //carrier
+                for(int i = 0; i < 6; i++){
+                    computerPlayerBoard[0][i] = board.ship.ordinal();
+                }
+                //submarine
+                for(int i = 0; i < 3; i++){
+                    computerPlayerBoard[1][i] = board.ship.ordinal();
+                }
+                //destroyer
+                for(int i = 0; i < 3; i++){
+                    computerPlayerBoard[2][i] = board.ship.ordinal();
+                }
+                //battleship
+                for(int i = 0; i < 5; i++){
+                    computerPlayerBoard[3][i] = board.ship.ordinal();
+                }
+                //cruiser
+                for(int i = 0; i < 4; i++){
+                    computerPlayerBoard[4][i] = board.ship.ordinal();
+                }
+                break;
+            case 3:
+                //carrier
+                for(int i = 3; i < 8; i++){
+                    computerPlayerBoard[i][4] = board.ship.ordinal();
+                }
+                //submarine
+                for(int i = 7; i < 9; i++){
+                    computerPlayerBoard[i][9] = board.ship.ordinal();
+                }
+                //destroyer
+                for(int i = 8; i <= 9; i++){
+                    computerPlayerBoard[0][i] = board.ship.ordinal();
+                }
+                //battleship
+                for(int i = 3; i < 7; i++){
+                    computerPlayerBoard[i][6] = board.ship.ordinal();
+                }
+                //cruiser
+                for(int i = 3; i < 6; i++){
+                    computerPlayerBoard[i][3] = board.ship.ordinal();
+                }
+                break;
+            case 4:
+                //carrier
+                for(int i = 0; i < 5; i++){
+                    computerPlayerBoard[9][i] = board.ship.ordinal();
+                }
+                //submarine
+                for(int i = 0; i < 3; i++){
+                    computerPlayerBoard[i][9] = board.ship.ordinal();
+                }
+                //destroyer
+                for(int i = 8; i <= 9; i++){
+                    computerPlayerBoard[i][0] = board.ship.ordinal();
+                }
+                //battleship
+                for(int i = 3; i < 7; i++){
+                    computerPlayerBoard[i][6] = board.ship.ordinal();
+                }
+                //cruiser
+                for(int i = 3; i < 6; i++){
+                    computerPlayerBoard[3][i] = board.ship.ordinal();
+                }
+                break;
+            case 5:
+                //carrier
+                for(int i = 0; i < 5; i++){
+                    computerPlayerBoard[9][i] = board.ship.ordinal();
+                }
+                //submarine
+                for(int i = 0; i < 3; i++){
+                    computerPlayerBoard[8][i] = board.ship.ordinal();
+                }
+                //destroyer
+                for(int i = 0; i < 3; i++){
+                    computerPlayerBoard[7][i] = board.ship.ordinal();
+                }
+                //battleship
+                for(int i = 0; i < 5; i++){
+                    computerPlayerBoard[6][i] = board.ship.ordinal();
+                }
+                //cruiser
+                for(int i = 0; i < 4; i++){
+                    computerPlayerBoard[5][i] = board.ship.ordinal();
+                }
+                break;
+            case 6:
+                //carrier
+                for(int i = 3; i < 8; i++){
+                    computerPlayerBoard[3][i] = board.ship.ordinal();
+                }
+                //submarine
+                for(int i = 3; i < 5; i++){
+                    computerPlayerBoard[2][i] = board.ship.ordinal();
+                }
+                //destroyer
+                for(int i = 3; i < 5; i++){
+                    computerPlayerBoard[4][i] = board.ship.ordinal();
+                }
+                //battleship
+                for(int i = 3; i < 7; i++){
+                    computerPlayerBoard[5][i] = board.ship.ordinal();
+                }
+                //cruiser
+                for(int i = 3; i < 6; i++){
+                    computerPlayerBoard[6][i] = board.ship.ordinal();
+                }
+                break;
+            case 7:
+                //carrier
+                for(int i = 2; i < 7; i++){
+                    computerPlayerBoard[i][4] = board.ship.ordinal();
+                }
+                //submarine
+                for(int i = 2; i < 4; i++){
+                    computerPlayerBoard[i][3] = board.ship.ordinal();
+                }
+                //destroyer
+                for(int i = 2; i < 4; i++){
+                    computerPlayerBoard[i][5] = board.ship.ordinal();
+                }
+                //battleship
+                for(int i = 2; i < 6; i++){
+                    computerPlayerBoard[i][6] = board.ship.ordinal();
+                }
+                //cruiser
+                for(int i = 4; i < 7; i++){
+                    computerPlayerBoard[i][5] = board.ship.ordinal();
+                }
+                break;
+            case 8:
+                //carrier
+                for(int i = 0; i < 5; i++){
+                    computerPlayerBoard[i][0] = board.ship.ordinal();
+                }
+                //submarine
+                for(int i = 5; i < 7; i++){
+                    computerPlayerBoard[i][0] = board.ship.ordinal();
+                }
+                //destroyer
+                for(int i = 0; i < 2; i++){
+                    computerPlayerBoard[i][1] = board.ship.ordinal();
+                }
+                //battleship
+                for(int i = 2; i < 6; i++){
+                    computerPlayerBoard[i][1] = board.ship.ordinal();
+                }
+                //cruiser
+                for(int i = 7; i <= 9; i++){
+                    computerPlayerBoard[i][0] = board.ship.ordinal();
+                }
+                break;
+            case 9:
+                //carrier
+                for(int i = 0; i < 5; i++){
+                    computerPlayerBoard[0][i] = board.ship.ordinal();
+                }
+                //submarine
+                for(int i = 5; i < 7; i++){
+                    computerPlayerBoard[0][i] = board.ship.ordinal();
+                }
+                //destroyer
+                for(int i = 0; i < 2; i++){
+                    computerPlayerBoard[1][i] = board.ship.ordinal();
+                }
+                //battleship
+                for(int i = 2; i < 6; i++){
+                    computerPlayerBoard[1][i] = board.ship.ordinal();
+                }
+                //cruiser
+                for(int i = 7; i <= 9; i++){
+                    computerPlayerBoard[0][i] = board.ship.ordinal();
+                }
+                break;
+            case 10:
+                //carrier
+                for(int i = 1; i < 6; i++){
+                    computerPlayerBoard[3][i] = board.ship.ordinal();
+                }
+                //submarine
+                for(int i = 6; i < 8; i++){
+                    computerPlayerBoard[i][5] = board.ship.ordinal();
+                }
+                //destroyer
+                for(int i = 0; i < 2; i++){
+                    computerPlayerBoard[i][7] = board.ship.ordinal();
+                }
+                //battleship
+                for(int i = 1; i < 5; i++){
+                    computerPlayerBoard[6][i] = board.ship.ordinal();
+                }
+                //cruiser
+                for(int i = 1; i < 4; i++){
+                    computerPlayerBoard[0][i] = board.ship.ordinal();
+                }
+                break;
+
+
+
+
         }
         return true;
     }
