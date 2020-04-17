@@ -37,9 +37,6 @@ public class BSGameStateTest {
 
     @Test
     public void fireHumanPlayer() throws Exception{
-
-
-
         BSGameState bs = new BSGameState();
         for(int i = 0;i < 10; i++) {
             for (int j = 0; j < 10; j++) {
@@ -63,7 +60,15 @@ public class BSGameStateTest {
 
     }
 
-
+    @Test
+    public void placeComputerShipsDumb() throws Exception{
+        BSGameState bs =  new BSGameState();
+        bs.placeComputerShipsDumb(1);
+        assertEquals(bs.computerAircraftCarrier.isSunk(), false);
+        assertEquals(bs.computerAircraftCarrier.getX(), 4);
+        assertEquals(bs.computerAircraftCarrier.getY(), 2);
+        assertEquals(bs.computerAircraftCarrier.getOrientation(), 1);
+    }
 
         @Test
         public void winner () throws Exception {

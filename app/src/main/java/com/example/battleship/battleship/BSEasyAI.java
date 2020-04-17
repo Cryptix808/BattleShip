@@ -17,7 +17,8 @@ public class BSEasyAI extends GameComputerPlayer {
       return;
     }
     if(((BSGameState) info).inGame == false){
-      game.sendAction(new BSPlaceCPUShip(this, (int)(Math.random() * 6)));
+      game.sendAction(new BSPlaceCPUShip(this, 1));
+      // game.sendAction(new BSPlaceCPUShip(this, ((int)(Math.random()) * 19 + 1)));
     }
 
     int randX, randY;

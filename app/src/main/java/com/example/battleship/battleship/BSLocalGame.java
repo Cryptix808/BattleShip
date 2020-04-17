@@ -11,7 +11,7 @@ public class BSLocalGame extends LocalGame{
     BSGameState bs;
 
     public BSLocalGame(){
-        bs = new BSGameState(true);
+        bs = new BSGameState();
     }
 
     protected boolean canMove(int playerCode){ return true; }
@@ -40,11 +40,11 @@ public class BSLocalGame extends LocalGame{
                 p.sendInfo(BScpy);
             }
             else if(bs.startGame) {
-                BSGameState BScpy = new BSGameState(bs.humanPlayerBoard, bs.computerPlayerBoard);
+                BSGameState BScpy = new BSGameState(bs.humanPlayerBoard, bs.computerPlayerBoard, bs);
                 p.sendInfo(BScpy);
             }
             else if (bs.humanPlayerBoard != null) {
-                BSGameState BScpy = new BSGameState(bs.humanPlayerBoard, bs.computerPlayerBoard, bs.cpuHasPlaced);
+                BSGameState BScpy = new BSGameState(bs, bs.humanPlayerBoard, bs.computerPlayerBoard, bs.cpuHasPlaced);
                 p.sendInfo(BScpy);
             }
             else {
