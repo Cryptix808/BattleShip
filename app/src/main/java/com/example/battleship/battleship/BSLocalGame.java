@@ -29,9 +29,18 @@ public class BSLocalGame extends LocalGame{
         else if (action instanceof BSPlaceShip ) {
 
         }
+
+        else if (action instanceof BSSwitchPhase) {
+            return bs.switchPhase();
+        }
+        else if (action instanceof rotate) {
+            bs.switchOr();
+            return true;
+         }
             return false;
     }
-        public void sendUpdatedStateTo (GamePlayer p){
+
+    public void sendUpdatedStateTo (GamePlayer p){
             if (bs == null) {
                 return;
             }

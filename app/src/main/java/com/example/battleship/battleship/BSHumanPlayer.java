@@ -3,6 +3,7 @@ package com.example.battleship.battleship;
 import android.view.MotionEvent;
 import android.view.SurfaceView;
 import android.view.View;
+import android.view.inputmethod.CorrectionInfo;
 import android.widget.Button;
 
 import com.example.battleship.GameFramework.GameHumanPlayer;
@@ -20,12 +21,12 @@ public class BSHumanPlayer extends GameHumanPlayer implements Button.OnClickList
     private Button doneButton = null;
     private Button fireButton = null;
 
-    private final List<BoardTouchListener> listeners = new ArrayList<>();
     private GameMainActivity myActivity;
     private int playerID = getPlayerID();
     private BoardView boardView;
     private BSGameState bss;
     private tester tester;
+    public int orientation;
 
     /**
      * constructor
@@ -33,8 +34,8 @@ public class BSHumanPlayer extends GameHumanPlayer implements Button.OnClickList
      * @param name the name of the player
      */
     public BSHumanPlayer(String name) {
-
         super(name);
+        orientation = 1;
     }
 
     //Getter for the GUI
@@ -62,16 +63,33 @@ public class BSHumanPlayer extends GameHumanPlayer implements Button.OnClickList
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
-        tester.x = event.getX();
-        tester.y = event.getY();
+        if (bss.inGame) {
+            tester.x = event.getX();
+            tester.y = event.getY();
 
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
-                if(tester.x >= 1060 + (73 * i) && tester.x <= 1060 + 70 + (73 * i) &&
-                        tester.y >= 155 + (73 * j) && tester.y <= 155 + 70 + (73 *j)) {
-                    game.sendAction(new BSFire(this, i, j));
+            for (int i = 0; i < 10; i++) {
+                for (int j = 0; j < 10; j++) {
+                    if (tester.x >= 1060 + (73 * i) && tester.x <= 1060 + 70 + (73 * i) &&
+                            tester.y >= 155 + (73 * j) && tester.y <= 155 + 70 + (73 * j)) {
+                        game.sendAction(new BSFire(this, i, j));
+                    }
                 }
             }
+        }
+        else {
+            if(tester.x >= 200 && tester.x <= 760 && tester.y <= 760 && tester.y >= 1030){
+                game.sendAction(new BSSwitchPhase(this));
+            }
+            if(tester.x >= 1500 && tester.y >= 900 && tester.x <= 1800 && tester.y <= 1030){
+                if (orientation == 1) {
+                    orientation = 0;
+                }
+                else {
+                    orientation = 1;
+                }
+                game.sendAction(new rotate(this, orientation));
+            }
+            if(tester.x)
         }
 
         v.postInvalidate();
@@ -107,54 +125,6 @@ public class BSHumanPlayer extends GameHumanPlayer implements Button.OnClickList
         //doneButton.setOnClickListener(this);
     }
 
-    //Overridden to detect a board touch. When board is touched corresponding place is identified
-    public boolean onTouchEvent(MotionEvent event){
-        switch(event.getAction()){
-            case MotionEvent.ACTION_UP:
-                int xy = locatePlace(event.getX(), event.getY());
-                boardView.invalidate();
-                if(xy >= 0){
-                    notifyBoardTouch(xy/100, xy%100);
-                }
-                break;
-
-            case MotionEvent.ACTION_DOWN:
-            case MotionEvent.ACTION_MOVE:
-            case MotionEvent.ACTION_CANCEL:
-
-        }
-        return true;
-    }
-
-    private int locatePlace(float x, float y) {
-        return 0;
-
-    }
-
-    //Registers the given listener
-    void addBoardTouchListener(BoardTouchListener listener){
-        if(!listeners.contains(listener)){
-            listeners.add(listener);
-        }
-    }
-
-    //Unregister the listener
-    public void removeBoardTouchListener(BoardTouchListener listener){
-        listeners.remove(listener);
-    }
-
-    //Notify listeners
-    private void notifyBoardTouch(int x, int y){
-        for(BoardTouchListener listener : listeners){
-            listener.onTouch(x,y);
-        }
-    }
-
-
-    public interface BoardTouchListener{
-        void onTouch(int x, int y);
-
-    }
 
     public int getPlayerID(){
         return playerID;

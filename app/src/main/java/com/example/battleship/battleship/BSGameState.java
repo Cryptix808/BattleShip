@@ -20,6 +20,7 @@ public class BSGameState extends GameState {
     private int turnCode;
     public int humanPlayerHits;
     public int computerPlayerHits;
+    int orientation;
     boolean cpuHasPlaced;
     boolean startGame;
     boolean inGame;
@@ -67,6 +68,7 @@ public class BSGameState extends GameState {
         player = 0;
         humanPlayerHits = 0;
         computerPlayerHits = 0;
+        orientation = 1;
         cpuHasPlaced = false;
         startGame = false;
         inGame = false;
@@ -114,6 +116,7 @@ public class BSGameState extends GameState {
             }
         }
         this.cpuHasPlaced = cpuHasPlaced;
+        orientation = bs.orientation;
         startGame = false;
         inGame = false;
 
@@ -143,6 +146,7 @@ public class BSGameState extends GameState {
         // initalize rest of data
         humanPlayerHits = 0;
         computerPlayerHits = 0;
+        orientation = bs.orientation;
         inGame = true;
 
         playerBattleship = new Ship(bs.playerBattleship);
@@ -666,6 +670,27 @@ public class BSGameState extends GameState {
         return true;
     }
 
+    public boolean switchPhase() {
+        int cpuShipCounter = 0;
+        int playerShipCounter = 0;
+        for(int i = 0; i < 10; i++){
+            for(int j = 0; j <10; j++){
+                if(humanPlayerBoard[i][j] == board.ship.ordinal()){
+                    playerShipCounter++;
+                }
+                if (computerPlayerBoard[i][j] == board.ship.ordinal()) {
+                    cpuShipCounter++;
+                }
+            }
+        }
+        if(cpuShipCounter == 17 && playerShipCounter == 17){
+            inGame = true;
+            return true;
+        }
+
+        return false;
+    }
+
     public boolean fireHumanPlayer(int x, int y){
         if(computerPlayerBoard[x][y] == board.water.ordinal() && turnCode == 0) {
             computerPlayerBoard[x][y] = board.missed.ordinal();
@@ -696,6 +721,14 @@ public class BSGameState extends GameState {
         return false;
     }
 
+    public void switchOr() {
+        if (orientation == 1) {
+            orientation = 0;
+        }
+        else {
+            orientation = 1;
+        }
+    }
 
     public int getNextPlayer() {
         if (player == 1) {
