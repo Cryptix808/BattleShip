@@ -14,7 +14,7 @@ public class BSLocalGame extends LocalGame{
         bs = new BSGameState();
     }
 
-    protected boolean canMove(int playerCode){ return true; }
+    protected boolean canMove(int playerCode){ return playerCode == bs.getTurnCode(); }
 
     @Override
     public boolean makeMove(GameAction action) {
@@ -27,7 +27,7 @@ public class BSLocalGame extends LocalGame{
             }
         }
         else if (action instanceof BSPlaceShip ) {
-
+            return bs.placeShip(((BSPlaceShip) action).x, ((BSPlaceShip) action).y);
         }
 
         else if (action instanceof BSSwitchPhase) {
@@ -38,7 +38,7 @@ public class BSLocalGame extends LocalGame{
             return true;
          }
         else if (action instanceof shipSelector){
-
+            return bs.select(((shipSelector) action).getShipID());
          }
             return false;
     }

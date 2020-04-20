@@ -9,4 +9,8 @@ public class shipSelector extends GameAction {
         super(player);
         shipSelected = selectedShip;
     }
+
+    public int getShipID() {
+        return shipSelected;
+    }
 }

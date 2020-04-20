@@ -3,7 +3,6 @@ package com.example.battleship.battleship;
 import android.view.MotionEvent;
 import android.view.SurfaceView;
 import android.view.View;
-import android.view.inputmethod.CorrectionInfo;
 import android.widget.Button;
 
 import com.example.battleship.GameFramework.GameHumanPlayer;
@@ -12,8 +11,6 @@ import com.example.battleship.GameFramework.infoMessage.GameInfo;
 import com.example.battleship.R;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 public class BSHumanPlayer extends GameHumanPlayer implements Button.OnClickListener, SurfaceView.OnTouchListener, Serializable {
 
@@ -63,10 +60,10 @@ public class BSHumanPlayer extends GameHumanPlayer implements Button.OnClickList
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
+        tester.x = event.getX();
+        tester.y = event.getY();
         if (bss.inGame) {
-            tester.x = event.getX();
-            tester.y = event.getY();
-
+            // c.drawRect(1088 + (dupx * i), 175 + (dupy * j), 1140 + (dupx * i), 234 + (dupy * j), red);
             for (int i = 0; i < 10; i++) {
                 for (int j = 0; j < 10; j++) {
                     if (tester.x >= 1060 + (73 * i) && tester.x <= 1060 + 70 + (73 * i) &&
@@ -77,16 +74,10 @@ public class BSHumanPlayer extends GameHumanPlayer implements Button.OnClickList
             }
         }
         else {
-            if(tester.x >= 200 && tester.x <= 760 && tester.y <= 760 && tester.y >= 1030){
+            if(tester.x >= 200 && tester.x <= 760 && tester.y >= 760 && tester.y <= 1030){
                 game.sendAction(new BSSwitchPhase(this));
             }
             if(tester.x >= 1500 && tester.y >= 900 && tester.x <= 1800 && tester.y <= 1030){
-                if (orientation == 1) {
-                    orientation = 0;
-                }
-                else {
-                    orientation = 1;
-                }
                 game.sendAction(new rotate(this, orientation));
             }
             //carrier selector
@@ -105,8 +96,21 @@ public class BSHumanPlayer extends GameHumanPlayer implements Button.OnClickList
             if(tester.x >= 1800 && tester.x <= 1875 && tester.y <= 400 && tester.y >=100){
                 game.sendAction(new shipSelector(this, 3));
             }
-            if(tester.x >= 1500 && tester.x <= 1450 && tester.y <= 300 && tester.y >= 100){
+            if(tester.x >= 1400 && tester.x <= 1450 && tester.y <= 300 && tester.y >= 100){
                 game.sendAction(new shipSelector(this, 4));
+            }
+        //1088 + (60 * i), 175 + (67 * j), 1140 + (60 * i), 234 + (67 * j)
+            //234-175 = 59
+            //1140-1088 = 52
+            //100 + (60 * i), 100 + (67 * j), 152 + (60 * i), 159 + (67 * j)
+            //180,
+            for(int i = 0; i < 10; i++){
+                for(int j = 0; j < 10; j++){
+                    if (tester.x >= 180 + (60 * i) && tester.x <= 240 + (60 * i) &&
+                            tester.y >= 167 + (67 * j) && tester.y <= 234 + (67 * j)) {
+                        game.sendAction(new BSPlaceShip(this, i, j));
+                    }
+                }
             }
         }
 

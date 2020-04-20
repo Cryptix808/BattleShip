@@ -1,5 +1,9 @@
 package com.example.battleship.battleship;
 
+import android.nfc.Tag;
+import android.text.Html;
+import android.util.Log;
+
 import com.example.battleship.GameFramework.infoMessage.GameState;
 
 public class BSGameState extends GameState {
@@ -116,6 +120,7 @@ public class BSGameState extends GameState {
         computerPlayerHits = 0;
         orientation = bs.orientation;
         inGame = true;
+        turnCode = bs.turnCode;
 
         playerShips = new Ship[5];
         computerShips = new Ship[5];
@@ -150,26 +155,65 @@ public class BSGameState extends GameState {
             computerShips[0] = bs.computerShips[i];
         }
     }
-    public boolean placeShip(int length, int x, int y, int orientation) {
 
-        if (orientation == 0) {
-            if (length + y < 9) {
-                return false;
+    public boolean placeShip(int x, int y) {
+
+        Ship ship = null;
+
+        for (int i = 0; i < 5; i++) {
+            if (playerShips[i].selected) {
+                ship = playerShips[i];
             }
         }
+        if (ship == null) {
+            return false;
+        }
+
         if (orientation == 1) {
-            if (length + x < 9) {
+            if (ship.length + y > 10) {
                 return false;
             }
         }
-        for (int i = 0; i < length; i++) {
-            if (humanPlayerBoard[x][y] != board.water.ordinal()) {
+        if (orientation == 0) {
+            if (ship.length + x > 10) {
                 return false;
             }
         }
-        for (int i = 0; i < length; i++) {
-            humanPlayerBoard[x][y] = board.ship.ordinal();
+        for (int i = 0; i < ship.length; i++) {
+            if(orientation == 0) {
+                if (humanPlayerBoard[y][x+i] != board.water.ordinal()) {
+                    return false;
+                }
+            }
+            else{
+                if(humanPlayerBoard[y+i][x] != board.water.ordinal()){
+                    return false;
+                }
+            }
         }
+        for (int i = 0; i < ship.length; i++) {
+            if(orientation == 0) {
+                humanPlayerBoard[y][x+i] = board.ship.ordinal();
+            }
+            else{
+                humanPlayerBoard[y+i][x] = board.ship.ordinal();
+            }
+        }
+        if(ship.placed){
+            if(ship.orientation == 1){
+                for(int i = 0; i < ship.length; i++){
+                    humanPlayerBoard[ship.y+i][ship.x] = board.water.ordinal();
+                }
+            }
+            else{
+                for(int j = 0; j < ship.length; j++){
+                    humanPlayerBoard[ship.y][ship.x+j] = board.water.ordinal();
+                }
+            }
+        }
+        ship.setShip(x, y, orientation);
+        ship.placed = true;
+
         return true;
     }
 
@@ -623,6 +667,7 @@ public class BSGameState extends GameState {
                 break;
 
         }
+        cpuHasPlaced = true;
         return true;
     }
 
@@ -634,18 +679,37 @@ public class BSGameState extends GameState {
     public boolean switchPhase() {
         int cpuShipCounter = 0;
         int playerShipCounter = 0;
-        for(int i = 0; i < 10; i++){
-            for(int j = 0; j <10; j++){
-                if(humanPlayerBoard[i][j] == board.ship.ordinal()){
-                    playerShipCounter++;
-                }
-                if (computerPlayerBoard[i][j] == board.ship.ordinal()) {
-                    cpuShipCounter++;
+        do {
+            cpuShipCounter = 0;
+            playerShipCounter = 0;
+            if (!cpuHasPlaced) {
+                placeComputerShipsDumb((int) (Math.random() * 19) + 1);
+            }
+            for(int i = 0; i < 10; i++){
+                for(int j = 0; j <10; j++){
+                    if(humanPlayerBoard[i][j] == board.ship.ordinal()){
+                        playerShipCounter++;
+                    }
+                    if (computerPlayerBoard[i][j] == board.ship.ordinal()) {
+                        cpuShipCounter++;
+                    }
                 }
             }
-        }
+            if (cpuShipCounter != 17) {
+                cpuHasPlaced = false;
+                cpuShipCounter = 0;
+                playerShipCounter = 0;
+                for (int i = 0; i < 10; i++) {
+                    for (int j = 0; j < 10; j++) {
+                        computerPlayerBoard[i][j] = 0;
+                    }
+                }
+            }
+
+        } while (cpuShipCounter != 17);
+
         if(cpuShipCounter == 17 && playerShipCounter == 17){
-            inGame = true;
+            startGame = true;
             return true;
         }
 
@@ -653,6 +717,9 @@ public class BSGameState extends GameState {
     }
 
     public boolean fireHumanPlayer(int x, int y){
+        if (turnCode == 1) {
+            return false;
+        }
         if(computerPlayerBoard[x][y] == board.water.ordinal() && turnCode == 0) {
             computerPlayerBoard[x][y] = board.missed.ordinal();
             turnCode = 1;
@@ -668,12 +735,12 @@ public class BSGameState extends GameState {
     }
 
     public boolean fireComputerPlayer(int x, int y){
-        if(humanPlayerBoard[x][y] == board.water.ordinal() && turnCode == 1) {
+        if(humanPlayerBoard[x][y] == board.water.ordinal() || humanPlayerBoard[x][y] == board.missed.ordinal() && turnCode == 1) {
             humanPlayerBoard[x][y] = board.missed.ordinal();
             turnCode = 0;
             return true;
         }
-        if (humanPlayerBoard[x][y] == board.ship.ordinal() && turnCode == 1) {
+        if (humanPlayerBoard[x][y] == board.ship.ordinal() || humanPlayerBoard[x][y] == board.missed.ordinal() && turnCode == 1) {
             humanPlayerBoard[x][y] = board.hit.ordinal();
             turnCode = 0;
             computerPlayerHits++;
@@ -689,6 +756,14 @@ public class BSGameState extends GameState {
         else {
             orientation = 1;
         }
+    }
+
+    public boolean select(int selectedShip){
+        for(int i = 0; i < 5; i++) {
+            playerShips[i].selected = false;
+        }
+        playerShips[selectedShip].selected = true;
+        return true;
     }
 
     public int getNextPlayer() {

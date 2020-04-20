@@ -7,7 +7,7 @@ public class Ship {
     protected int y;
     protected int length;
     protected int orientation;
-    protected boolean selected;
+    public boolean selected;
 
 
     public Ship(int length, int x, int y, int orientation){
@@ -16,7 +16,7 @@ public class Ship {
         this.y = y;
         this.length = length;
         this.orientation = orientation;
-        placed = true;
+        placed = false;
     }
 
     public Ship(Ship s) {
