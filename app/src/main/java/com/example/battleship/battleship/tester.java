@@ -278,10 +278,11 @@ public class tester extends SurfaceView {
     }
 
     protected void drawGrid(Canvas c) {
+        waterBackground = Bitmap.createScaledBitmap(waterBackground, backgroundWaterx, backgroundWatery, true);
         c.drawBitmap(waterBackground, 1088, 177, blue);
         //c.drawRect(1088, 177, 1680, 840, blue);
-        waterBackground = Bitmap.createScaledBitmap(waterBackground, backgroundWaterx, backgroundWatery, true);
-        c.drawRect(152, 446, 527, 861, blue);
+        waterBackground = Bitmap.createScaledBitmap(waterBackground, 375, 415, true);
+        c.drawBitmap(waterBackground, 152, 446, blue);
         c.drawBitmap(backgroundComputer, 1000, 100, white);
         c.drawBitmap(backgroundPlayer, 100, 400, white);
 
