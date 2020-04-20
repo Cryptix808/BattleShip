@@ -7,6 +7,7 @@ import com.example.battleship.GameFramework.gameConfiguration.GamePlayerType;
 import com.example.battleship.battleship.BSEasyAI;
 import com.example.battleship.battleship.BSHumanPlayer;
 import com.example.battleship.battleship.BSLocalGame;
+import com.example.battleship.battleship.BSMedAI;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -31,11 +32,16 @@ public class MainActivity extends GameMainActivity implements Serializable {
                 return new BSEasyAI(name);
             }
         });
+        playerTypes.add(new GamePlayerType("Med AI") {
+            public GamePlayer createPlayer(String name){
+                return new BSMedAI(name);
+            }
+        });
 
         //Creates game config class for BS
         GameConfig defaultConfig = new GameConfig(playerTypes,2,2,"Battleship", PORT_NUMBER);
             defaultConfig.addPlayer("Human", 0);
-            defaultConfig.addPlayer("Computer", 1);
+            defaultConfig.addPlayer("Easy Computer", 1);
             defaultConfig.setRemoteData("Remote Human Player", "", 0);
 
         return defaultConfig;
