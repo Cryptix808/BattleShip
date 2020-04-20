@@ -63,11 +63,11 @@ public class BSHumanPlayer extends GameHumanPlayer implements Button.OnClickList
         tester.x = event.getX();
         tester.y = event.getY();
         if (bss.inGame) {
-            // c.drawRect(1088 + (dupx * i), 175 + (dupy * j), 1140 + (dupx * i), 234 + (dupy * j), red);
-            for (int i = 0; i < 10; i++) {
-                for (int j = 0; j < 10; j++) {
-                    if (tester.x >= 1060 + (73 * i) && tester.x <= 1060 + 70 + (73 * i) &&
-                            tester.y >= 155 + (73 * j) && tester.y <= 155 + 70 + (73 * j)) {
+            //1088, 177, 1680, 840
+            for(int i = 0; i < 10; i++){
+                for(int j = 0; j < 10; j++){
+                    if (tester.x >= 1088 + (60 * i) && tester.x <= 1148 + (60 * i) &&
+                            tester.y >= 177 + (67 * j) && tester.y <= 244 + (67 * j)) {
                         game.sendAction(new BSFire(this, i, j));
                     }
                 }

@@ -164,19 +164,19 @@ public class tester extends SurfaceView {
         c.drawText("Done", 430, 980, black);
         if (bs != null) {
             if (bs.playerShips[0].selected) {
-                c.drawRect(1500, 100, 1600, 500, red);
+                c.drawRect(1500, 100, 1560, 435, red);
             }
             if (bs.playerShips[1].selected) {
-                c.drawRect(1600, 100, 1688, 450, red);
+                c.drawRect(1600, 100, 1660, 368, red);
             }
             if (bs.playerShips[2].selected) {
-                c.drawRect(1700, 100, 1775, 400, red);
+                c.drawRect(1700, 100, 1760, 301, red);
             }
             if (bs.playerShips[3].selected) {
-                c.drawRect(1800, 100, 1875, 400, red);
+                c.drawRect(1800, 100, 1860, 301, red);
             }
             if (bs.playerShips[4].selected) {
-                c.drawRect(1400, 100, 1450, 300, red);
+                c.drawRect(1400, 100, 1460, 234, red);
             }
         }
         c.drawBitmap(pAC, 1500, 100, grey);
@@ -278,8 +278,9 @@ public class tester extends SurfaceView {
     }
 
     protected void drawGrid(Canvas c) {
-
-        c.drawRect(1088, 177, 1680, 840, blue);
+        c.drawBitmap(waterBackground, 1088, 177, blue);
+        //c.drawRect(1088, 177, 1680, 840, blue);
+        waterBackground = Bitmap.createScaledBitmap(waterBackground, backgroundWaterx, backgroundWatery, true);
         c.drawRect(152, 446, 527, 861, blue);
         c.drawBitmap(backgroundComputer, 1000, 100, white);
         c.drawBitmap(backgroundPlayer, 100, 400, white);
