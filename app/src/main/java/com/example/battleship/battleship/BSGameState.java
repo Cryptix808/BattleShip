@@ -236,7 +236,7 @@ public class BSGameState extends GameState {
                     computerPlayerBoard[i][0] = board.ship.ordinal();
                 }
                 computerShips[3].setShip(7, 9, 1);
-                for (int i = 7; i <= 9; i++){
+                for (int i = 6; i < 9; i++){
                     computerPlayerBoard[i][9] = board.ship.ordinal();
                 }
                 computerShips[4].setShip(5, 4, 1);
@@ -248,7 +248,6 @@ public class BSGameState extends GameState {
                 computerShips[0].setShip(0, 0, 1);
                 for(int i = 0; i < 6; i++){
                     computerPlayerBoard[i][0] = board.ship.ordinal();
-
                 }
                 computerShips[1].setShip( 0, 3, 1);
                 for(int i = 0; i < 5; i++){
@@ -259,7 +258,7 @@ public class BSGameState extends GameState {
                     computerPlayerBoard[i][4] = board.ship.ordinal();
                 }
                 computerShips[3].setShip(0,1,1);
-                for(int i = 0; i < 3; i++){
+                for(int i = 0; i < 4; i++){
                     computerPlayerBoard[i][1] = board.ship.ordinal();
                 }
                 computerShips[4].setShip(0,2,1);
@@ -271,7 +270,6 @@ public class BSGameState extends GameState {
                 computerShips[0].setShip(0,0,0);
                 for(int i = 0; i < 6; i++){
                     computerPlayerBoard[0][i] = board.ship.ordinal();
-
                 }
                 computerShips[1].setShip( 0, 3, 0);
                 for(int i = 0; i < 5; i++){
@@ -282,7 +280,7 @@ public class BSGameState extends GameState {
                     computerPlayerBoard[4][i] = board.ship.ordinal();
                 }
                 computerShips[3].setShip( 0, 1, 0);
-                for(int i = 0; i < 3; i++){
+                for(int i = 0; i < 4; i++){
                     computerPlayerBoard[1][i] = board.ship.ordinal();
                 }
                 computerShips[4].setShip(0,2,0);
@@ -294,7 +292,6 @@ public class BSGameState extends GameState {
                 computerShips[0].setShip(3,4,1);
                 for(int i = 3; i < 8; i++){
                     computerPlayerBoard[i][4] = board.ship.ordinal();
-
                 }
                 computerShips[1].setShip( 3, 6, 1);
                 for(int i = 3; i < 7; i++){
@@ -305,7 +302,7 @@ public class BSGameState extends GameState {
                     computerPlayerBoard[i][3] = board.ship.ordinal();
                 }
                 computerShips[3].setShip( 7, 9, 1);
-                for(int i = 7; i < 9; i++){
+                for(int i = 6; i < 9; i++){
                     computerPlayerBoard[i][9] = board.ship.ordinal();
                 }
                 computerShips[4].setShip(8,0,0);
@@ -331,7 +328,7 @@ public class BSGameState extends GameState {
                     computerPlayerBoard[i][9] = board.ship.ordinal();
                 }
                 computerShips[4].setShip(8,0,1);
-                for(int i = 8; i <= 9; i++){
+                for(int i = 7; i < 9; i++){
                     computerPlayerBoard[i][0] = board.ship.ordinal();
                 }
                 break;
@@ -341,11 +338,11 @@ public class BSGameState extends GameState {
                     computerPlayerBoard[9][i] = board.ship.ordinal();
                 }
                 computerShips[1].setShip(0,6,0);
-                for(int i = 0; i < 5; i++){
+                for(int i = 0; i < 4; i++){
                     computerPlayerBoard[6][i] = board.ship.ordinal();
                 }
                 computerShips[2].setShip(0,5,0);
-                for(int i = 0; i < 4; i++){
+                for(int i = 0; i < 3; i++){
                     computerPlayerBoard[5][i] = board.ship.ordinal();
                 }
                 computerShips[3].setShip(0,8,0);
@@ -353,7 +350,7 @@ public class BSGameState extends GameState {
                     computerPlayerBoard[8][i] = board.ship.ordinal();
                 }
                 computerShips[3].setShip(0,7,0);
-                for(int i = 0; i < 3; i++){
+                for(int i = 0; i < 2; i++){
                     computerPlayerBoard[7][i] = board.ship.ordinal();
                 }
                 break;
@@ -371,7 +368,7 @@ public class BSGameState extends GameState {
                     computerPlayerBoard[6][i] = board.ship.ordinal();
                 }
                 computerShips[3].setShip(3,2,0);
-                for(int i = 3; i < 5; i++){
+                for(int i = 3; i < 6; i++){
                     computerPlayerBoard[2][i] = board.ship.ordinal();
                 }
                 computerShips[4].setShip(3,4,0);
@@ -393,7 +390,7 @@ public class BSGameState extends GameState {
                     computerPlayerBoard[i][5] = board.ship.ordinal();
                 }
                 computerShips[3].setShip(2,3,1);
-                for(int i = 2; i < 4; i++){
+                for(int i = 2; i < 5; i++){
                     computerPlayerBoard[i][3] = board.ship.ordinal();
                 }
                 computerShips[4].setShip(2,5,1);
@@ -415,7 +412,7 @@ public class BSGameState extends GameState {
                     computerPlayerBoard[i][0] = board.ship.ordinal();
                 }
                 computerShips[3].setShip(5,0,1);
-                for(int i = 5; i < 7; i++){
+                for(int i = 5; i < 8; i++){
                     computerPlayerBoard[i][0] = board.ship.ordinal();
                 }
                 computerShips[4].setShip(0,1,1);
@@ -437,7 +434,7 @@ public class BSGameState extends GameState {
                     computerPlayerBoard[0][i] = board.ship.ordinal();
                 }
                 computerShips[3].setShip(5,0,0);
-                for(int i = 5; i < 7; i++){
+                for(int i = 5; i < 8; i++){
                     computerPlayerBoard[0][i] = board.ship.ordinal();
                 }
                 computerShips[4].setShip(0,1,0);
@@ -481,7 +478,7 @@ public class BSGameState extends GameState {
                     computerPlayerBoard[i][2] = board.ship.ordinal();
                 }
                 computerShips[3].setShip(3,0,0);
-                for(int i = 3; i < 5; i++){
+                for(int i = 3; i < 6; i++){
                     computerPlayerBoard[0][i] = board.ship.ordinal();
                 }
                 computerShips[4].setShip(3,9,0);
@@ -503,7 +500,7 @@ public class BSGameState extends GameState {
                     computerPlayerBoard[i][0] = board.ship.ordinal();
                 }
                 computerShips[3].setShip(6,9,1);
-                for(int i = 6; i < 8; i++){
+                for(int i = 6; i < 9; i++){
                     computerPlayerBoard[i][9] = board.ship.ordinal();
                 }
                 computerShips[4].setShip(8,9,1);
@@ -525,7 +522,7 @@ public class BSGameState extends GameState {
                     computerPlayerBoard[i][4] = board.ship.ordinal();
                 }
                 computerShips[3].setShip(4,2,1);
-                for(int i = 4; i < 6; i++){
+                for(int i = 4; i < 7; i++){
                     computerPlayerBoard[i][2] = board.ship.ordinal();
                 }
                 computerShips[4].setShip(6,2,1);
@@ -547,7 +544,7 @@ public class BSGameState extends GameState {
                     computerPlayerBoard[4][i] = board.ship.ordinal();
                 }
                 computerShips[3].setShip(1,5,0);
-                for(int i = 1; i < 3; i++){
+                for(int i = 1; i < 4; i++){
                     computerPlayerBoard[5][i] = board.ship.ordinal();
                 }
                 computerShips[4].setShip(7,5,0);
@@ -569,7 +566,7 @@ public class BSGameState extends GameState {
                     computerPlayerBoard[1][i] = board.ship.ordinal();
                 }
                 computerShips[3].setShip(1,8,0);
-                for(int i = 1; i < 3; i++){
+                for(int i = 1; i < 4; i++){
                     computerPlayerBoard[8][i] = board.ship.ordinal();
                 }
                 computerShips[4].setShip(7,8,0);
@@ -591,7 +588,7 @@ public class BSGameState extends GameState {
                     computerPlayerBoard[1][i] = board.ship.ordinal();
                 }
                 computerShips[3].setShip(1,2,0);
-                for(int i = 1; i < 3; i++){
+                for(int i = 1; i < 4; i++){
                     computerPlayerBoard[2][i] = board.ship.ordinal();
                 }
                 computerShips[4].setShip(7,2,0);
@@ -613,7 +610,7 @@ public class BSGameState extends GameState {
                     computerPlayerBoard[6][i] = board.ship.ordinal();
                 }
                 computerShips[3].setShip(1,7,0);
-                for(int i = 1; i < 3; i++){
+                for(int i = 1; i < 4; i++){
                     computerPlayerBoard[7][i] = board.ship.ordinal();
                 }
                 computerShips[4].setShip(7,7,0);
@@ -635,7 +632,7 @@ public class BSGameState extends GameState {
                     computerPlayerBoard[9][i] = board.ship.ordinal();
                 }
                 computerShips[3].setShip(6,0,0);
-                for(int i = 6; i < 8; i++){
+                for(int i = 6; i < 9; i++){
                     computerPlayerBoard[0][i] = board.ship.ordinal();
                 }
                 computerShips[4].setShip(6,9,0);
@@ -656,8 +653,8 @@ public class BSGameState extends GameState {
                 for(int i = 3; i < 6; i++){
                     computerPlayerBoard[0][i] = board.ship.ordinal();
                 }
-                computerShips[3].setShip(1,8,0);
-                for(int i = 1; i < 3; i++){
+                computerShips[3].setShip(1,2,0);
+                for(int i = 1; i < 4; i++){
                     computerPlayerBoard[2][i] = board.ship.ordinal();
                 }
                 computerShips[4].setShip(4,2,1);
@@ -672,8 +669,530 @@ public class BSGameState extends GameState {
     }
 
     public boolean placeComputerShipsSmart(int pattern) {
+        if(cpuHasPlaced){
+            return false;
+        }
+        switch(pattern) {
+            case 1:
+                computerShips[0].setShip(1, 2, 1);
+                for (int i = 2; i < 7; i++) {
+                    computerPlayerBoard[i][1] = board.ship.ordinal();
+                }
+                computerShips[1].setShip(3, 4, 1);
+                for (int j = 4; j < 8; j++){
+                    computerPlayerBoard[j][3] = board.ship.ordinal();
+                }
+                computerShips[2].setShip(5, 3, 0);
+                for (int i = 3; i < 6; i++){
+                    computerPlayerBoard[i][5] = board.ship.ordinal();
+                }
+                computerShips[3].setShip(4, 1, 0);
+                for (int i = 4; i < 7; i++){
+                    computerPlayerBoard[1][i] = board.ship.ordinal();
+                }
+                computerShips[4].setShip(8, 5, 1);
+                for (int i = 5; i < 7; i++){
+                    computerPlayerBoard[i][8] = board.ship.ordinal();
+                }
 
+                break;
+            case 2:
+                computerShips[0].setShip(4, 2,  1);
+                for (int i = 2; i < 7; i++) {
+                    computerPlayerBoard[i][4] = board.ship.ordinal();
+                }
+                computerShips[1].setShip( 6, 3, 1);
+                for (int j = 3; j < 7; j++){
+                    computerPlayerBoard[j][6] = board.ship.ordinal();
+                }
+                computerShips[2].setShip( 6, 0, 0);
+                for (int i = 6; i < 9; i++){
+                    computerPlayerBoard[0][i] = board.ship.ordinal();
+                }
+                computerShips[3].setShip( 1, 8, 0);
+                for (int i = 1; i < 4; i++){
+                    computerPlayerBoard[8][i] = board.ship.ordinal();
+                }
+                computerShips[4].setShip( 1, 2, 1);
+                for (int i = 2; i < 4; i++){
+                    computerPlayerBoard[i][1] = board.ship.ordinal();
+                }
+
+                break;
+            case 4:
+                computerShips[0].setShip( 0, 2, 1);
+                for (int i = 2; i < 7; i++) {
+                    computerPlayerBoard[i][0] = board.ship.ordinal();
+                }
+                computerShips[1].setShip( 8, 3, 1);
+                for (int j = 3; j < 7; j++){
+                    computerPlayerBoard[j][8] = board.ship.ordinal();
+                }
+                computerShips[2].setShip( 5, 2, 1);
+                for (int i = 2; i < 5; i++){
+                    computerPlayerBoard[i][5] = board.ship.ordinal();
+                }
+                computerShips[3].setShip( 3, 8, 0);
+                for (int i = 3; i < 6; i++){
+                    computerPlayerBoard[8][i] = board.ship.ordinal();
+                }
+                computerShips[4].setShip(0, 9, 0);
+                for (int i = 0; i < 2; i++){
+                    computerPlayerBoard[9][i] = board.ship.ordinal();
+                }
+
+                break;
+            case 5:
+                computerShips[0].setShip( 7, 5, 1);
+                for (int i = 5; i < 10; i++) {
+                    computerPlayerBoard[i][7] = board.ship.ordinal();
+                }
+                computerShips[1].setShip( 1, 1, 1);
+                for (int j = 1; j < 5; j++){
+                    computerPlayerBoard[j][1] = board.ship.ordinal();
+                }
+                computerShips[2].setShip( 4, 2, 0);
+                for (int i = 4; i < 7; i++){
+                    computerPlayerBoard[2][i] = board.ship.ordinal();
+                }
+                computerShips[3].setShip( 1, 8, 0);
+                for (int i = 1; i < 4; i++){
+                    computerPlayerBoard[8][i] = board.ship.ordinal();
+                }
+                computerShips[4].setShip( 3, 6, 0);
+                for (int i = 3; i < 5; i++){
+                    computerPlayerBoard[6][i] = board.ship.ordinal();
+                }
+
+                break;
+            case 6:
+                computerShips[0].setShip( 3, 3, 0);
+                for (int i = 3; i < 8; i++) {
+                    computerPlayerBoard[3][i] = board.ship.ordinal();
+                }
+                computerShips[1].setShip( 3, 7, 0);
+                for (int j = 3; j < 7; j++){
+                    computerPlayerBoard[7][j] = board.ship.ordinal();
+                }
+                computerShips[2].setShip( 7, 4, 0);
+                for (int i =7; i < 10; i++){
+                    computerPlayerBoard[4][i] = board.ship.ordinal();
+                }
+                computerShips[3].setShip( 2, 5, 0);
+                for (int i = 2; i < 5; i++){
+                    computerPlayerBoard[5][i] = board.ship.ordinal();
+                }
+                computerShips[4].setShip(8, 8, 0);
+                for (int i = 8; i < 10; i++){
+                    computerPlayerBoard[8][i] = board.ship.ordinal();
+                }
+
+                break;
+            case 7:
+                computerShips[0].setShip( 3, 6, 0);
+                for (int i = 3; i < 8; i++) {
+                    computerPlayerBoard[6][i] = board.ship.ordinal();
+                }
+                computerShips[1].setShip(1, 2, 1);
+                for (int j = 2; j < 6; j++){
+                    computerPlayerBoard[j][1] = board.ship.ordinal();
+                }
+                computerShips[2].setShip( 7, 4, 1);
+                for (int i =7; i < 10; i++){
+                    computerPlayerBoard[4][i] = board.ship.ordinal();
+                }
+                computerShips[3].setShip( 2, 5, 0);
+                for (int i = 2; i < 5; i++){
+                    computerPlayerBoard[5][i] = board.ship.ordinal();
+                }
+                computerShips[4].setShip( 8, 8, 0);
+                for (int i = 8; i < 10; i++){
+                    computerPlayerBoard[8][i] = board.ship.ordinal();
+                }
+
+                break;
+            case 8:
+                computerShips[0].setShip(5, 1, 0);
+                for (int i = 5; i < 10; i++) {
+                    computerPlayerBoard[1][i] = board.ship.ordinal();
+                }
+                computerShips[1].setShip( 7, 4, 1);
+                for (int j = 4; j < 8; j++){
+                    computerPlayerBoard[j][7] = board.ship.ordinal();
+                }
+                computerShips[2].setShip( 4, 6, 1);
+                for (int i =6; i < 9; i++){
+                    computerPlayerBoard[i][4] = board.ship.ordinal();
+                }
+                computerShips[3].setShip( 2, 4, 1);
+                for (int i = 4; i < 7; i++){
+                    computerPlayerBoard[i][2] = board.ship.ordinal();
+                }
+                computerShips[4].setShip( 0, 1, 1);
+                for (int i = 1; i < 3; i++){
+                    computerPlayerBoard[i][0] = board.ship.ordinal();
+                }
+
+                break;
+            case 9:
+                computerShips[0].setShip( 5, 1, 0);
+                for (int i = 5; i < 10; i++) {
+                    computerPlayerBoard[1][i] = board.ship.ordinal();
+                }
+                computerShips[1].setShip( 7, 4, 1);
+                for (int j = 4; j < 8; j++){
+                    computerPlayerBoard[j][7] = board.ship.ordinal();
+                }
+                computerShips[2].setShip( 6, 3, 1);
+                for (int i =3; i < 6; i++){
+                    computerPlayerBoard[i][6] = board.ship.ordinal();
+                }
+                computerShips[3].setShip( 0, 1, 0);
+                for (int i = 0; i < 3; i++){
+                    computerPlayerBoard[1][i] = board.ship.ordinal();
+                }
+                computerShips[4].setShip( 5, 8, 1);
+                for (int i = 8; i < 10; i++){
+                    computerPlayerBoard[i][5] = board.ship.ordinal();
+                }
+
+                break;
+            case 10:
+                computerShips[0].setShip( 9, 3, 1);
+                for (int i = 3; i < 8; i++) {
+                    computerPlayerBoard[i][9] = board.ship.ordinal();
+                }
+                computerShips[1].setShip( 7, 4, 1);
+                for (int j = 4; j < 8; j++){
+                    computerPlayerBoard[j][7] = board.ship.ordinal();
+                }
+                computerShips[2].setShip( 4, 6, 1);
+                for (int i =6; i < 9; i++){
+                    computerPlayerBoard[4][i] = board.ship.ordinal();
+                }
+                computerShips[3].setShip( 2, 4, 1);
+                for (int i = 4; i < 7; i++){
+                    computerPlayerBoard[i][2] = board.ship.ordinal();
+                }
+                computerShips[4].setShip( 0, 1, 1);
+                for (int i = 1; i < 3; i++){
+                    computerPlayerBoard[i][0] = board.ship.ordinal();
+                }
+
+                break;
+            case 11:
+                //carrier
+                computerShips[0].setShip( 1, 3, 0);
+                for(int i = 1; i < 6; i++){
+                    computerPlayerBoard[3][i] = board.ship.ordinal();
+                }
+                //battleship
+                computerShips[1].setShip(1, 6, 0);
+                for(int i = 1; i < 5; i++){
+                    computerPlayerBoard[6][i] = board.ship.ordinal();
+                }
+                //submarine
+                computerShips[2].setShip( 5, 6, 1);
+                for(int i = 6; i < 8; i++){
+                    computerPlayerBoard[i][5] = board.ship.ordinal();
+                }
+                //cruiser
+                computerShips[3].setShip( 1, 0, 0);
+                for(int i = 1; i < 4; i++){
+                    computerPlayerBoard[0][i] = board.ship.ordinal();
+                }
+                //destroyer
+                computerShips[4].setShip( 7, 0, 1);
+                for(int i = 0; i < 2; i++){
+                    computerPlayerBoard[i][7] = board.ship.ordinal();
+                }
+
+                break;
+            case 12:
+                //carrier (5)
+                computerShips[0].setShip( 2, 1, 0);
+                for (int i = 2; i < 7; i++) {
+                    computerPlayerBoard[1][i] = board.ship.ordinal();
+                }
+                //battleship (4)
+                computerShips[1].setShip( 4, 3, 1);
+                for (int j = 3; j < 7; j++){
+                    computerPlayerBoard[j][4] = board.ship.ordinal();
+                }
+                //submarine (3)
+                computerShips[2].setShip( 7, 3, 1);
+                for (int i = 3; i < 6; i++){
+                    computerPlayerBoard[i][7] = board.ship.ordinal();
+                }
+                //cruiser (3)
+                computerShips[3].setShip( 2, 9, 0);
+                for (int i = 2; i < 5; i++){
+                    computerPlayerBoard[9][i] = board.ship.ordinal();
+                }
+                //destroyer (2)
+                computerShips[4].setShip( 1, 3, 1);
+                for (int i = 3; i < 5; i++){
+                    computerPlayerBoard[i][1] = board.ship.ordinal();
+                }
+                break;
+            case 13:
+                //carrier (5)
+                computerShips[0].setShip( 9, 2, 1);
+                for (int i = 2; i < 7; i++) {
+                    computerPlayerBoard[i][9] = board.ship.ordinal();
+                }
+                //battleship (4)
+                computerShips[1].setShip( 6, 0, 1);
+                for (int j = 0; j < 4; j++){
+                    computerPlayerBoard[j][6] = board.ship.ordinal();
+                }
+                //submarine (3)
+
+                computerShips[2].setShip( 4, 9, 0);
+                for (int i = 4; i < 7; i++){
+                    computerPlayerBoard[9][i] = board.ship.ordinal();
+                }
+                //cruiser (3)
+
+                computerShips[3].setShip( 1, 1, 0);
+                for (int i = 1; i < 4; i++){
+                    computerPlayerBoard[1][i] = board.ship.ordinal();
+                }
+                //destroyer (2)
+
+                computerShips[4].setShip( 3, 5, 1);
+                for (int i = 5; i < 7; i++){
+                    computerPlayerBoard[i][3] = board.ship.ordinal();
+                }
+                break;
+            case 14:
+                //carrier (5)
+
+                computerShips[0].setShip( 0, 5, 1);
+                for (int i = 5; i < 10; i++) {
+                    computerPlayerBoard[i][0] = board.ship.ordinal();
+                }
+                //battleship (4)
+
+                computerShips[1].setShip( 7, 3, 1);
+                for (int j = 3; j < 7; j++){
+                    computerPlayerBoard[j][7] = board.ship.ordinal();
+                }
+                //submarine (3)
+
+                computerShips[2].setShip( 3, 3, 1);
+                for (int i = 3; i < 6; i++){
+                    computerPlayerBoard[i][3] = board.ship.ordinal();
+                }
+                //cruiser (3)
+
+                computerShips[3].setShip( 4, 5, 1);
+                for (int i = 5; i < 8; i++){
+                    computerPlayerBoard[i][4] = board.ship.ordinal();
+                }
+                //destroyer (2)
+
+                computerShips[4].setShip( 5, 1, 0);
+                for (int i = 5; i < 7; i++){
+                    computerPlayerBoard[1][i] = board.ship.ordinal();
+                }
+                break;
+            case 15:
+                //carrier (5)
+
+                computerShips[0].setShip( 1, 8, 0);
+                for (int i = 1; i < 6; i++) {
+                    computerPlayerBoard[8][i] = board.ship.ordinal();
+                }
+                //battleship (4)
+
+                computerShips[1].setShip( 7, 3, 1);
+                for (int j = 3; j < 7; j++){
+                    computerPlayerBoard[j][7] = board.ship.ordinal();
+                }
+                //submarine (3)
+
+                computerShips[2].setShip( 6, 1, 0);
+                for (int i = 6; i < 9; i++){
+                    computerPlayerBoard[1][i] = board.ship.ordinal();
+                }
+                //cruiser (3)
+
+                computerShips[3].setShip( 1, 5, 0);
+                for (int i = 1; i < 4; i++){
+                    computerPlayerBoard[5][i] = board.ship.ordinal();
+                }
+                //destroyer (2)
+
+                computerShips[4].setShip( 2, 1, 1);
+                for (int i = 1; i < 3; i++){
+                    computerPlayerBoard[i][2] = board.ship.ordinal();
+                }
+                break;
+            case 16:
+                //carrier (5)
+
+                computerShips[0].setShip( 0, 1, 1);
+                for (int i = 1; i < 6; i++) {
+                    computerPlayerBoard[i][0] = board.ship.ordinal();
+                }
+                //battleship (4)
+
+                computerShips[1].setShip( 1, 9, 0);
+                for (int j = 1; j < 5; j++){
+                    computerPlayerBoard[9][j] = board.ship.ordinal();
+                }
+                //submarine (3)
+
+                computerShips[2].setShip( 9, 5, 1);
+                for (int i = 5; i < 8; i++){
+                    computerPlayerBoard[i][9] = board.ship.ordinal();
+                }
+                //cruiser (3)
+
+                computerShips[3].setShip( 9, 1, 1);
+                for (int i = 1; i < 4; i++){
+                    computerPlayerBoard[i][9] = board.ship.ordinal();
+                }
+                //destroyer (2)
+
+                computerShips[4].setShip( 4, 0, 0);
+                for (int i = 4; i < 6; i++){
+                    computerPlayerBoard[0][i] = board.ship.ordinal();
+                }
+                break;
+            case 17:
+                //carrier (5)
+
+                computerShips[0].setShip( 4, 2, 1);
+                for (int i = 2; i < 7; i++) {
+                    computerPlayerBoard[i][4] = board.ship.ordinal();
+                }
+                //battleship (4)
+
+                computerShips[1].setShip( 1, 5, 1);
+                for (int j = 5; j < 9; j++){
+                    computerPlayerBoard[j][1] = board.ship.ordinal();
+                }
+                //submarine (3)
+
+                computerShips[2].setShip( 7, 4, 1);
+                for (int i = 4; i < 7; i++){
+                    computerPlayerBoard[i][7] = board.ship.ordinal();
+                }
+                //cruiser (3)
+
+                computerShips[3].setShip( 6, 1, 0);
+                for (int i = 6; i < 9; i++){
+                    computerPlayerBoard[1][i] = board.ship.ordinal();
+                }
+                //destroyer (2)
+
+                computerShips[4].setShip( 1, 1, 0);
+                for (int i = 1; i < 3; i++){
+                    computerPlayerBoard[1][i] = board.ship.ordinal();
+                }
+                break;
+            case 18:
+                //carrier (5)
+
+                computerShips[0].setShip( 2, 3, 1);
+                for (int i = 3; i < 8; i++) {
+                    computerPlayerBoard[i][2] = board.ship.ordinal();
+                }
+                //battleship (4)
+
+                computerShips[1].setShip( 6, 4, 1);
+                for (int j = 4; j < 8; j++){
+                    computerPlayerBoard[j][6] = board.ship.ordinal();
+                }
+                //submarine (3)
+
+                computerShips[2].setShip( 8, 1, 1);
+                for (int i = 1; i < 4; i++){
+                    computerPlayerBoard[i][8] = board.ship.ordinal();
+                }
+                //cruiser (3)
+
+                computerShips[3].setShip( 3, 2, 0);
+                for (int i = 3; i < 6; i++){
+                    computerPlayerBoard[2][i] = board.ship.ordinal();
+                }
+                //destroyer (2)
+
+                computerShips[4].setShip( 4, 9, 0);
+                for (int i = 4; i < 6; i++){
+                    computerPlayerBoard[9][i] = board.ship.ordinal();
+                }
+                break;
+            case 19:
+                //carrier (5)
+
+                computerShips[0].setShip( 8, 5, 1);
+                for (int i = 5; i < 10; i++) {
+                    computerPlayerBoard[i][8] = board.ship.ordinal();
+                }
+                //battleship (4)
+
+                computerShips[1].setShip( 0, 0, 0);
+                for (int j = 0; j < 4; j++){
+                    computerPlayerBoard[0][j] = board.ship.ordinal();
+                }
+                //submarine (3)
+
+                computerShips[2].setShip( 7, 0, 1);
+                for (int i = 0; i < 3; i++){
+                    computerPlayerBoard[i][7] = board.ship.ordinal();
+                }
+                //cruiser (3)
+
+                computerShips[3].setShip( 5, 4, 1);
+                for (int i = 4; i < 7; i++){
+                    computerPlayerBoard[i][5] = board.ship.ordinal();
+                }
+                //destroyer (2)
+
+                computerShips[4].setShip( 3, 8, 0);
+                for (int i = 3; i < 5; i++){
+                    computerPlayerBoard[8][i] = board.ship.ordinal();
+                }
+                break;
+            case 20:
+                //carrier (5)
+
+                computerShips[0].setShip( 2, 5, 0);
+                for (int i = 2; i < 7; i++) {
+                    computerPlayerBoard[5][i] = board.ship.ordinal();
+                }
+                //battleship (4)
+
+                computerShips[1].setShip( 2, 1, 0);
+                for (int j = 2; j < 6; j++){
+                    computerPlayerBoard[1][j] = board.ship.ordinal();
+                }
+                //submarine (3)
+
+                computerShips[2].setShip( 3, 7, 1);
+                for (int i = 7; i < 10; i++){
+                    computerPlayerBoard[i][3] = board.ship.ordinal();
+                }
+                //cruiser (3)
+
+                computerShips[3].setShip( 6, 8, 0);
+                for (int i = 6; i < 9; i++){
+                    computerPlayerBoard[8][i] = board.ship.ordinal();
+                }
+                //destroyer (2)
+
+                computerShips[4].setShip( 8, 0, 0);
+                for (int i = 8; i < 10; i++){
+                    computerPlayerBoard[0][i] = board.ship.ordinal();
+                }
+                break;
+
+        }
         return true;
+
     }
 
     public boolean switchPhase() {
