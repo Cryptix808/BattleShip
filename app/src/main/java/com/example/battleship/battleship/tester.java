@@ -34,6 +34,7 @@ public class tester extends SurfaceView {
     private Bitmap backgroundPlayer;
     private Bitmap backgroundComputer;
     private Bitmap waterBackground;
+    private Bitmap waterbackgroundSmall;
     private Bitmap pAC;
     private Bitmap pAC90;
     private Bitmap pBS;
@@ -90,6 +91,8 @@ public class tester extends SurfaceView {
         placeShipBoard = BitmapFactory.decodeResource(getResources(), R.raw.bsboard);
         placeShipBoard = Bitmap.createScaledBitmap(placeShipBoard, computerBoardSize, computerBoardSize, true);
         waterBackground = BitmapFactory.decodeResource(getResources(), R.raw.ocean_resize);
+        waterbackgroundSmall = BitmapFactory.decodeResource(getResources(), R.raw.ocean_resize);
+        waterbackgroundSmall = Bitmap.createScaledBitmap(waterbackgroundSmall, 375, 415, true);
         waterBackground = Bitmap.createScaledBitmap(waterBackground, backgroundWaterx, backgroundWatery, true);
         backgroundPlayer = BitmapFactory.decodeResource(getResources(), R.raw.bsboard);
         backgroundPlayer = Bitmap.createScaledBitmap(backgroundPlayer, playerBoardSize, playerBoardSize, true);
@@ -278,11 +281,8 @@ public class tester extends SurfaceView {
     }
 
     protected void drawGrid(Canvas c) {
-        waterBackground = Bitmap.createScaledBitmap(waterBackground, backgroundWaterx, backgroundWatery, true);
         c.drawBitmap(waterBackground, 1088, 177, blue);
-        //c.drawRect(1088, 177, 1680, 840, blue);
-        waterBackground = Bitmap.createScaledBitmap(waterBackground, 375, 415, true);
-        c.drawBitmap(waterBackground, 152, 446, blue);
+        c.drawBitmap(waterbackgroundSmall, 152, 446, blue);
         c.drawBitmap(backgroundComputer, 1000, 100, white);
         c.drawBitmap(backgroundPlayer, 100, 400, white);
 
