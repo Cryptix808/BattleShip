@@ -7,6 +7,7 @@ public class Ship {
     protected int y;
     protected int length;
     protected int orientation;
+    protected boolean selected;
 
 
     public Ship(int length, int x, int y, int orientation){
@@ -25,6 +26,8 @@ public class Ship {
         this.length = s.length;
         this.orientation = s.orientation;
         placed = s.placed;
+        selected = s.selected;
+
     }
 
     public void setShip(int x, int y, int orientation) {

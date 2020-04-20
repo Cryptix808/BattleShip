@@ -37,6 +37,9 @@ public class BSLocalGame extends LocalGame{
             bs.switchOr();
             return true;
          }
+        else if (action instanceof shipSelector){
+
+         }
             return false;
     }
 

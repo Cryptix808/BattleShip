@@ -89,7 +89,25 @@ public class BSHumanPlayer extends GameHumanPlayer implements Button.OnClickList
                 }
                 game.sendAction(new rotate(this, orientation));
             }
-            if(tester.x)
+            //carrier selector
+            if(tester.x >= 1500 && tester.x <=1600 && tester.y <= 500 && tester.y >= 100){
+                game.sendAction(new shipSelector(this, 0));
+            }
+            //battleship selector
+            if(tester.x >= 1600 && tester.x <= 1688 && tester.y <= 450 && tester.y >= 100){
+                game.sendAction(new shipSelector(this, 1));
+            }
+            //cruiser selector
+            if(tester.x >= 1700 && tester.x <= 1775 && tester.y <= 400 && tester.y >= 100){
+                game.sendAction(new shipSelector(this, 2));
+            }
+            //submarine selector
+            if(tester.x >= 1800 && tester.x <= 1875 && tester.y <= 400 && tester.y >=100){
+                game.sendAction(new shipSelector(this, 3));
+            }
+            if(tester.x >= 1500 && tester.x <= 1450 && tester.y <= 300 && tester.y >= 100){
+                game.sendAction(new shipSelector(this, 4));
+            }
         }
 
         v.postInvalidate();
