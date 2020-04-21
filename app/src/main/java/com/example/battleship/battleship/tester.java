@@ -145,10 +145,11 @@ public class tester extends SurfaceView {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-
+        /**
         canvas.drawText(" ", 0, 0, black);
         canvas.drawText("x\t: \t" + (int) x, 100,100, black);
         canvas.drawText("y\t: \t" + (int) y, 100,200, black);
+         */
         if(bs != null && bs.inGame) {
             drawGrid(canvas);
         }
@@ -281,6 +282,7 @@ public class tester extends SurfaceView {
     }
 
     protected void drawGrid(Canvas c) {
+
         c.drawBitmap(waterBackground, 1088, 177, blue);
         c.drawBitmap(waterbackgroundSmall, 152, 446, blue);
         c.drawBitmap(backgroundComputer, 1000, 100, white);
@@ -304,22 +306,97 @@ public class tester extends SurfaceView {
             c.drawBitmap(cAC, dupy, dupx, grey);
         }
 
-
-
-
         if(bs == null || bs.humanPlayerBoard == null){
             return;
         }
+        dupx = 38;
+        dupy = 42;
+        int xSize = 38;
+        int ySize = 42;
+        if(bs.playerShips[0].orientation == 0){
+            pAC90 = Bitmap.createScaledBitmap(pAC90, xSize * 5, ySize, true);
+        }
+        else {
+            pAC = Bitmap.createScaledBitmap(pAC, xSize, ySize * 5, true);
+        }
+        if(bs.playerShips[1].orientation == 0){
+            pBS90 = Bitmap.createScaledBitmap(pBS90, xSize * 4, ySize, true);
+        }
+        else {
+            pBS = Bitmap.createScaledBitmap(pBS, xSize, ySize * 4, true);
+        }
+        if(bs.playerShips[2].orientation == 0){
+            pC90 = Bitmap.createScaledBitmap(pC90, xSize  * 3, ySize, true);
+        }
+        else {
+            pC = Bitmap.createScaledBitmap(pC, xSize, ySize  * 3, true);
+        }
+        if(bs.playerShips[3].orientation == 0){
+            pS90 = Bitmap.createScaledBitmap(pS90, xSize  * 3, ySize, true);
+        }
+        else {
+            pS = Bitmap.createScaledBitmap(pS, xSize, ySize  * 3, true);
+        }
+        if(bs.playerShips[4].orientation == 0){
+            pD90 = Bitmap.createScaledBitmap(pD90, xSize  * 2, ySize, true);
+        }
+        else {
+            pD = Bitmap.createScaledBitmap(pD, xSize, ySize  * 2, true);
+        }
+        for(int i = 0; i < 5; i++){
+            if(bs.playerShips[i].isPlaced()){
+                if(i == 0){
+                    if(bs.playerShips[i].orientation == 1){
+                        c.drawBitmap(pAC, 152 + dupx * bs.playerShips[i].x, 446 + dupy * bs.playerShips[i].y, grey);
+                    }
+                    else{
+                        c.drawBitmap(pAC90, 152 + dupx * bs.playerShips[i].x, 446 + dupy * bs.playerShips[i].y, grey);
+                    }
+                }
+                if(i == 1){
+                    if(bs.playerShips[i].orientation == 1){
+                        c.drawBitmap(pBS, 152 + dupx * bs.playerShips[i].x, 446 + dupy * bs.playerShips[i].y, grey);
+                    }
+                    else{
+                        c.drawBitmap(pBS90, 152 + dupx * bs.playerShips[i].x, 446 + dupy * bs.playerShips[i].y, grey);
+                    }
+                }
+                if(i == 2){
+                    if(bs.playerShips[i].orientation == 1){
+                        c.drawBitmap(pC, 152 + dupx * bs.playerShips[i].x, 446 + dupy * bs.playerShips[i].y, grey);
+                    }
+                    else{
+                        c.drawBitmap(pC90, 152 + dupx * bs.playerShips[i].x, 446 + dupy * bs.playerShips[i].y, grey);
+                    }
+                }
+                if(i == 3){
+                    if(bs.playerShips[i].orientation == 1){
+                        c.drawBitmap(pS, 152 + dupx * bs.playerShips[i].x, 446 + dupy * bs.playerShips[i].y, grey);
+                    }
+                    else{
+                        c.drawBitmap(pS90, 152 + dupx * bs.playerShips[i].x, 446 + dupy * bs.playerShips[i].y, grey);
+                    }
+                }
+                if(i == 4){
+                    if(bs.playerShips[i].orientation == 1){
+                        c.drawBitmap(pD, 152 + dupx * bs.playerShips[i].x, 446 + dupy * bs.playerShips[i].y, grey);
+                    }
+                    else{
+                        c.drawBitmap(pD90, 152 + dupx * bs.playerShips[i].x, 446 + dupy * bs.playerShips[i].y, grey);
+                    }
+                }
+            }
+        }
 
+        dupx = 38;
+        dupy = 42;
         for (int j = 9; j > -1; j--) {
             for (int i = 9; i > -1; i--) {
                 if(bs.humanPlayerBoard[j][i] == BSGameState.board.hit.ordinal()){
                     c.drawRect(152 + (dupx * i), 446 + (dupy * j), 188 + (dupx * i), 483 + (dupy * j), red);
                 }
                 //for debugging
-                if(bs.humanPlayerBoard[i][j] == BSGameState.board.missed.ordinal()){
-                    c.drawRect(152 + (dupx* i), 446 + (dupy * j), 188 + (dupx * i), 483 + (dupy * j), white);
-                }
+
             }
         }
 

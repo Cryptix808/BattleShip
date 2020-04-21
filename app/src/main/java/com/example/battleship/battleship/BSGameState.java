@@ -1192,7 +1192,6 @@ public class BSGameState extends GameState {
 
         }
         return true;
-
     }
 
     public boolean switchPhase() {
