@@ -1,5 +1,11 @@
 package com.example.battleship.battleship;
 
+/**
+ * Authors: Nate Kline, Grant Nelson, Miggy Sabater
+ *
+ * This class is responsible for recording data based on what type of ship it is
+ */
+
 public class Ship {
 
     protected boolean sunk, placed;

@@ -3,6 +3,12 @@ package com.example.battleship.battleship;
 import com.example.battleship.GameFramework.GameComputerPlayer;
 import com.example.battleship.GameFramework.infoMessage.GameInfo;
 
+/**
+ * Authors: Nate Kline, Grant Nelson, Miggy Sabater
+ *
+ * This class is responsible for how the easy AI interacts with the board
+ */
+
 public class BSEasyAI extends GameComputerPlayer {
   public BSEasyAI(String name) {super (name);}
 

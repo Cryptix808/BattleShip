@@ -5,6 +5,12 @@ import com.example.battleship.GameFramework.actionMessage.GameAction;
 
 import java.io.Serializable;
 
+/**
+ * Authors: Nate Kline, Grant Nelson, Miggy Sabater
+ *
+ * This class is responsible for firing on certain spots on the ship
+ */
+
 public class BSFire extends GameAction implements Serializable {
 
     /**

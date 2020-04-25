@@ -6,6 +6,13 @@ import android.util.Log;
 
 import com.example.battleship.GameFramework.infoMessage.GameState;
 
+/**
+ * Authors: Nate Kline, Grant Nelson, Miggy Sabater
+ *
+ * This class is responsible for what state the game should be in. We also included the many different
+ * boards the AI can randomly choose from.
+ */
+
 public class BSGameState extends GameState {
 
     int count;
