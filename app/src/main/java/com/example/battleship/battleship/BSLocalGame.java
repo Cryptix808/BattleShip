@@ -6,6 +6,13 @@ import com.example.battleship.GameFramework.GamePlayer;
 import com.example.battleship.GameFramework.LocalGame;
 import com.example.battleship.GameFramework.actionMessage.GameAction;
 
+/**
+ * Authors: Nate Kline, Grant Nelson, Miggy Sabater
+ *
+ * This class is responsible for receiving data and translating it based on the
+ * requirements and sending the information back out to the players.
+ */
+
 public class BSLocalGame extends LocalGame{
 
     BSGameState bs;

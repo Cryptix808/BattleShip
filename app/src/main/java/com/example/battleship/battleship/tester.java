@@ -13,6 +13,12 @@ import com.example.battleship.R;
 
 import static android.graphics.Color.WHITE;
 
+/**
+ * Authors: Nate Kline, Grant Nelson, Miggy Sabater
+ *
+ * 
+ */
+
 public class tester extends SurfaceView {
     float x, y;
 

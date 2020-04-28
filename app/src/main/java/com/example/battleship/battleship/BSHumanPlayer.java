@@ -12,6 +12,14 @@ import com.example.battleship.R;
 
 import java.io.Serializable;
 
+/**
+ * Authors: Nate Kline, Grant Nelson, Miggy Sabater
+ *
+ * This class is responsible for whatever the human player interacts with. This can
+ * be anything from the setup and battle phase. It then sends the information to get processed
+ * by the local game.
+ */
+
 public class BSHumanPlayer extends GameHumanPlayer implements Button.OnClickListener, SurfaceView.OnTouchListener, Serializable {
 
     private Button startButton = null;

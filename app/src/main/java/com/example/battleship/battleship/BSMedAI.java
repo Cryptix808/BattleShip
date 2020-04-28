@@ -6,6 +6,12 @@ import com.example.battleship.GameFramework.Game;
 import com.example.battleship.GameFramework.GameComputerPlayer;
 import com.example.battleship.GameFramework.infoMessage.GameInfo;
 
+/**
+ * Authors: Nate Kline, Grant Nelson, Miggy Sabater
+ *
+ * This class is responsible for the medium AI and how it interacts in the game
+ */
+
 public class BSMedAI extends GameComputerPlayer {
     /**
      * constructor

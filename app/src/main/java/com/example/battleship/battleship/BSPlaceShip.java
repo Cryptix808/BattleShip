@@ -5,6 +5,13 @@ import com.example.battleship.GameFramework.actionMessage.GameAction;
 
 import java.io.Serializable;
 
+/**
+ * Authors: Nate Kline, Grant Nelson, Miggy Sabater
+ *
+ * This class is responsible for placing the ship and recording where the human placed his/her
+ * ship in order to get processed to be a hit or a miss.
+ */
+
 public class BSPlaceShip extends GameAction implements Serializable {
     /**
      * constructor for GameAction
