@@ -1,5 +1,7 @@
 package com.example.battleship.battleship;
 
+import android.util.Log;
+
 import com.example.battleship.GameFramework.Game;
 import com.example.battleship.GameFramework.GameComputerPlayer;
 import com.example.battleship.GameFramework.infoMessage.GameInfo;
@@ -69,21 +71,32 @@ public class BSMedAI extends GameComputerPlayer {
                             }
                         }
                         posI = i + 1;
-                        while(posI < 10 && ((BSGameState) info).humanPlayerBoard[posI][j] == 2){
-                            posI++;
-                            if ( posI < 10 && ((BSGameState) info).humanPlayerBoard[posI][j] == 0) {
+                        while(posI < 10 && j < 10 && ((BSGameState) info).humanPlayerBoard[posI][j] == 2){
+                            if(posI != 9){
+                                posI += 1;
+                            }
+                            Log.d("FUCK JAVA 1", "\nposI: " + posI + "\nj: " + j +"\n");
+                            if ( posI < 10 && j < 10 && ((BSGameState) info).humanPlayerBoard[posI][j] == 0 ||
+                                    (((BSGameState) info).humanPlayerBoard[posI][j] == 3)) {
                                 game.sendAction(new BSFire(this, posI, j));
                                 posI = -1;
                                 posJ = -1;
                                 attkX = -1;
                                 attkY = -1;
                                 return;
+                            }
+                            if(posI == 9){
+                                posI += 1;
                             }
                         }
                         posJ = j + 1;
-                        while(posJ < 10 && ((BSGameState) info).humanPlayerBoard[i][posJ] == 2){
-                            posJ++;
-                            if ( posJ < 10 && ((BSGameState) info).humanPlayerBoard[i][posJ] == 0) {
+                        while(posJ < 10 && i < 10 && ((BSGameState) info).humanPlayerBoard[i][posJ] == 2){
+                            if(posJ != 9){
+                                posJ += 1;
+                            }
+                            Log.d("FUCK JAVA 2", "\nposJ: " + posJ + "\ni: " + i +"\n");
+                            if ( posJ < 10 && i < 10 && ((BSGameState) info).humanPlayerBoard[i][posJ] == 0 ||
+                                    (((BSGameState) info).humanPlayerBoard[i][posJ] == 3)) {
                                 game.sendAction(new BSFire(this, i, posJ));
                                 posI = -1;
                                 posJ = -1;
@@ -91,11 +104,18 @@ public class BSMedAI extends GameComputerPlayer {
                                 attkY = -1;
                                 return;
                             }
+                            if(posJ == 9){
+                                posJ += 1;
+                            }
                         }
                         posI = i - 1;
-                        while(posI >= 0 && ((BSGameState) info).humanPlayerBoard[posI][j] == 2){
-                            posI--;
-                            if ( posI >= 0 && ((BSGameState) info).humanPlayerBoard[posI][j] == 0) {
+                        while(posI >= 0 && j >= 0 && ((BSGameState) info).humanPlayerBoard[posI][j] == 2){
+                            if(posI != 0){
+                                posI -= 1;
+                            }
+                            Log.d("FUCK JAVA 3", "\nposI: " + posI + "\nj: " + j +"\n");
+                            if ( posI >= 0 && j >= 0 && ((BSGameState) info).humanPlayerBoard[posI][j] == 0 ||
+                            (((BSGameState) info).humanPlayerBoard[posI][j] == 3)) {
                                 game.sendAction(new BSFire(this, posI, j));
                                 posI = -1;
                                 posJ = -1;
@@ -103,30 +123,53 @@ public class BSMedAI extends GameComputerPlayer {
                                 attkY = -1;
                                 return;
                             }
+                            if(posI == 0){
+                                posI -= 1;
+                            }
                         }
                         posJ = j - 1;
-                        while(posJ < 10 && ((BSGameState) info).humanPlayerBoard[i][posJ] == 2){
-                            posJ--;
-                            if ( posJ < 10 && ((BSGameState) info).humanPlayerBoard[i][posJ] == 0) {
+                        while(posJ >= 0 && i >= 0 && ((BSGameState) info).humanPlayerBoard[i][posJ] == 2){
+                            if(posJ != 0){
+                                posJ -= 1;
+                            }
+                            Log.d("FUCK JAVA 4", "\nposJ: " + posJ + "\ni: " + i +"\n");
+                            if ( posJ >= 0 && i >= 0 && (((BSGameState) info).humanPlayerBoard[i][posJ] == 0) ||
+                                    (((BSGameState) info).humanPlayerBoard[i][posJ] == 3)) {
                                 game.sendAction(new BSFire(this, i, posJ));
                                 posI = -1;
                                 posJ = -1;
                                 attkX = -1;
                                 attkY = -1;
                                 return;
+                            }
+                            if(posJ == 0){
+                                posJ -= 1;
                             }
                         }
                     }
                 }
             }
 
-            if(attkX != -1) {
+            if((attkX != -1) && (((BSGameState) info).humanPlayerBoard[attkX][attkY] == 3 ||
+                    ((BSGameState) info).humanPlayerBoard[attkX][attkY] == 0)) {
                 game.sendAction(new BSFire(this, attkX, attkY));
+                attkX = -1;
+                attkY = -1;
+                return;
             }
 
             sleep(.75);
-            game.sendAction(new BSFire(this, randomX(), randomY()));
-            return;
+            do {
+                attkX = randomX();
+                attkY = randomY();
+                if ((((BSGameState) info).humanPlayerBoard[attkX][attkY] == 3 ||
+                        ((BSGameState) info).humanPlayerBoard[attkX][attkY] == 0)) {
+                    game.sendAction(new BSFire(this, attkX, attkY));
+                    attkX = -1;
+                    attkY = -1;
+                    return;
+                }
+            } while(true);
         }
         else {
             return;

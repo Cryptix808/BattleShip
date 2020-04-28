@@ -156,7 +156,7 @@ public class BSGameState extends GameState {
         }
     }
 
-    public boolean placeShip(int x, int y) {
+    public boolean placeShip(int player, int x, int y) {
 
         Ship ship = null;
 
@@ -1241,12 +1241,15 @@ public class BSGameState extends GameState {
         if(computerPlayerBoard[x][y] == board.water.ordinal() && turnCode == 0) {
             computerPlayerBoard[x][y] = board.missed.ordinal();
             turnCode = 1;
+            //check ships if sunk
             return true;
         }
         if (computerPlayerBoard[x][y] == board.ship.ordinal() && turnCode == 0) {
             computerPlayerBoard[x][y] = board.hit.ordinal();
             turnCode = 1;
             humanPlayerHits++;
+            //check ships if sunk
+            //
             return true;
         }
         return false;

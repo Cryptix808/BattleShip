@@ -27,7 +27,7 @@ public class BSLocalGame extends LocalGame{
             }
         }
         else if (action instanceof BSPlaceShip ) {
-            return bs.placeShip(((BSPlaceShip) action).x, ((BSPlaceShip) action).y);
+            return bs.placeShip(((BSPlaceShip) action).player, ((BSPlaceShip) action).x, ((BSPlaceShip) action).y);
         }
 
         else if (action instanceof BSSwitchPhase) {

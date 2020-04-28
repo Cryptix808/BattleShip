@@ -13,8 +13,10 @@ public class BSPlaceShip extends GameAction implements Serializable {
      */
     int x;
     int y;
+    int player;
     public BSPlaceShip(GamePlayer player, int x, int y) {
         super(player);
+        this.player = 1;
         this.x = x;
         this.y =y;
     }
