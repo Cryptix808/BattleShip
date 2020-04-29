@@ -15,7 +15,20 @@ public class Ship {
     protected int orientation;
     public boolean selected;
 
-
+    /**
+     * This constructor is the ship so the game knows how
+     * all of the params required for the ship
+     * object
+     *
+     * @param length is the length of the ship
+     *
+     * @param x is the x coord of the ship
+     *
+     * @param y is the y coord of the ship
+     *
+     * @param orientation is the 180 degree flip of the ship
+     *
+     */
     public Ship(int length, int x, int y, int orientation){
         sunk = false;
         this.x = x;
@@ -36,6 +49,19 @@ public class Ship {
 
     }
 
+    /**
+     * This method sets the ship on the board so that
+     * the correct coordinates on the board are filled
+     * based on what ship was placed
+     *
+     *
+     * @param x is the x coord of the ship
+     * @param y is the y coord of the ship
+     *
+     * @param orientation is the 180 orientation of the ship
+     *
+     *
+     */
     public void setShip(int x, int y, int orientation) {
         this.x = x;
         this.y = y;

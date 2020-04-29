@@ -50,6 +50,14 @@ public class BSLocalGame extends LocalGame{
             return false;
     }
 
+    /**
+     * This method sends the state to the game player
+     * so both players have the same data on
+     * both ends
+     *
+     *
+     *
+     * */
     public void sendUpdatedStateTo (GamePlayer p){
             if (bs == null) {
                 return;
@@ -75,6 +83,12 @@ public class BSLocalGame extends LocalGame{
             }
         }
 
+    /**
+     * This method checks if the game is ove rand returns the
+     * winner of the game if it is so that the return message
+     * to the player notifies them of who won
+     *
+     */
     @Override
     protected String checkIfGameOver(){
         if(bs.getWinner() == 1){
