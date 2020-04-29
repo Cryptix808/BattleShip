@@ -54,17 +54,20 @@ public class BSLocalGame extends LocalGame{
             if (bs == null) {
                 return;
             }
-            if (bs.inGame) {
+            else if (bs.inGame) {
                 BSGameState BScpy = new BSGameState(bs);
                 p.sendInfo(BScpy);
+                return;
             }
             else if(bs.startGame) {
                 BSGameState BScpy = new BSGameState(bs.humanPlayerBoard, bs.computerPlayerBoard, bs);
                 p.sendInfo(BScpy);
+                return;
             }
             else if (bs.humanPlayerBoard != null) {
                 BSGameState BScpy = new BSGameState(bs, bs.humanPlayerBoard, bs.computerPlayerBoard, bs.cpuHasPlaced);
                 p.sendInfo(BScpy);
+                return;
             }
             else {
                 BSGameState BScpy = new BSGameState();
