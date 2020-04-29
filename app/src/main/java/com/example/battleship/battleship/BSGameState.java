@@ -17,24 +17,25 @@ public class BSGameState extends GameState {
 
     int count;
     public enum board { water, missed, hit, ship }
-
+//the two boards in the game
     public int[][] humanPlayerBoard;
     public int[][] computerPlayerBoard;
-
+//some variables for the players update state
     private int player;
     private int turnCode;
     public int humanPlayerHits;
     public int computerPlayerHits;
     public int orientation;
-
+//for the game to update
     boolean cpuHasPlaced;
     boolean startGame;
     boolean inGame;
     public int humanPlayerMiss;
     public int computerPlayerMiss;
-
+// where the ships are located on the board
     public Ship playerShips[];
     public Ship computerShips[];
+//the methods for the state to update
 
     public int getHumanPlayerHits() {
         return humanPlayerHits;
@@ -60,6 +61,8 @@ public class BSGameState extends GameState {
     public int getHumanPlayerMiss() {
         return humanPlayerMiss;
     }
+
+
 
     public BSGameState(){
         humanPlayerBoard = new int[10][10];
@@ -96,7 +99,20 @@ public class BSGameState extends GameState {
         computerShips[4] = new Ship(2, -1, -1, 1);
     }
 
-    // placing ships
+    /**
+     * This is the method for placing ships on the boards and making sure
+     * their orientation, length and type of ship is accurate
+     *
+     *
+     * @param bs is the current gamestate
+     *
+     * @param humanPlayerBoard is the humans board they are placing on
+     *
+     * @param computerPlayerBoard is the computer player board they
+     *                            are placing on
+     * @param cpuHasPlaced
+     *
+     */
     public BSGameState(BSGameState bs, int[][] humanPlayerBoard, int [][] computerPlayerBoard, boolean cpuHasPlaced) {
         this.humanPlayerBoard = new int[10][10];
         this.computerPlayerBoard = new int[10][10];
@@ -123,7 +139,16 @@ public class BSGameState extends GameState {
 
     }
 
-    // starting game
+    /**
+     * this is the method for starting the game
+     *
+     * @param humanPlayerBoard humans board
+     *
+     * @param computerPlayerBoard computer players board
+     *
+     * @param bs the gamestate
+     *
+     */
     public BSGameState(int[][] humanPlayerBoard, int [][] computerPlayerBoard, BSGameState bs) {
         this.humanPlayerBoard = new int[10][10];
         this.computerPlayerBoard = new int[10][10];
@@ -152,7 +177,12 @@ public class BSGameState extends GameState {
         humanPlayerMiss = bs.humanPlayerMiss;
     }
 
-    // in game
+    /**
+     * THis is the method for the in game initialization
+     *
+     * @param bs the gamestate
+     *
+     */
     public BSGameState(BSGameState bs) {
         this.humanPlayerBoard = new int[10][10];
         this.computerPlayerBoard = new int[10][10];
@@ -179,6 +209,18 @@ public class BSGameState extends GameState {
         humanPlayerMiss = bs.humanPlayerMiss;
     }
 
+    /**
+     * This is the method for hte player placing the ships
+     *
+     * @param player the player count
+     *
+     * @param x the x coord
+     *
+     * @param y the y coord
+     *
+     * @return true if the ship is placed
+     *
+     */
     public boolean placeShip(int player, int x, int y) {
 
         Ship ship = null;
@@ -240,6 +282,14 @@ public class BSGameState extends GameState {
         return true;
     }
 
+    /**
+     * This is the dumb AI selection options for the dumb AI
+     * ship placement
+     * it is a switch case of 20 options chosen at random
+     *
+     * @param pattern
+     * @return
+     */
     public boolean placeComputerShipsDumb(int pattern) {
         if(cpuHasPlaced){
             return false;
@@ -691,6 +741,13 @@ public class BSGameState extends GameState {
         return true;
     }
 
+    /**
+     * This is the method for the medium AI to choose their ship placement
+     * it is a switch case of 20 variations chosen at random
+     *
+     * @param pattern
+     * @return
+     */
     public boolean placeComputerShipsSmart(int pattern) {
         if(cpuHasPlaced){
             return false;
@@ -1217,6 +1274,12 @@ public class BSGameState extends GameState {
         return true;
     }
 
+    /**
+     * This method switches the game phase if the players have
+     * chosen their ship locations
+     *
+     * @return
+     */
     public boolean switchPhase() {
         int cpuShipCounter = 0;
         int playerShipCounter = 0;
@@ -1257,6 +1320,18 @@ public class BSGameState extends GameState {
         return false;
     }
 
+    /**
+     * THis is the method for the human player being able to fire
+     * at an enemy ship
+     *
+     * it checks through the location on the other board and checks
+     * to see if it is a hit or miss
+     *
+     * @param x x coord of shot
+     * @param y y coord of shot
+     *
+     * @return
+     */
     public boolean fireHumanPlayer(int x, int y){
         if (turnCode == 1) {
             return false;
@@ -1279,6 +1354,19 @@ public class BSGameState extends GameState {
         return false;
     }
 
+    /**
+     * THis is the method for the computer player being able to fire
+     * at an enemy ship
+     *
+     * it checks through the location on the other board and checks
+     * to see if it is a hit or miss
+     *
+     * @param x x coord of shot
+     * @param y y coord of shot
+     *
+     * @return
+     */
+
     public boolean fireComputerPlayer(int x, int y){
         if(humanPlayerBoard[x][y] == board.water.ordinal() || humanPlayerBoard[x][y] == board.missed.ordinal() && turnCode == 1) {
             humanPlayerBoard[x][y] = board.missed.ordinal();
@@ -1295,6 +1383,10 @@ public class BSGameState extends GameState {
         return false;
     }
 
+    /**
+     * This is a method to switch the orientation of a ship
+     *
+     */
     public void switchOr() {
         if (orientation == 1) {
             orientation = 0;
@@ -1304,6 +1396,12 @@ public class BSGameState extends GameState {
         }
     }
 
+    /**
+     * This is a method to select a ship to move it
+     *
+     * @param selectedShip
+     * @return
+     */
     public boolean select(int selectedShip){
         for(int i = 0; i < 5; i++) {
             playerShips[i].selected = false;
@@ -1322,6 +1420,13 @@ public class BSGameState extends GameState {
         return player;
     }
 
+    /**
+     * This is a method to select the winner if they have
+     * hit every square where a ship is located on the board
+     *
+     *
+     * @return
+     */
     public int winner() {
         if(humanPlayerHits == 17) {
             return 1;
@@ -1332,6 +1437,10 @@ public class BSGameState extends GameState {
         return 0;
     }
 
+    /**
+     * This method gets the winner of the game
+     * @return
+     */
     public int getWinner() {return winner();}
 
 }
