@@ -74,7 +74,7 @@ public class tester extends SurfaceView {
         playerBoardSize = 500;
         computerBoardSize = 800;
         backgroundWaterx = 600;
-        backgroundWatery = 670;
+        backgroundWatery = 667;
         aCSizex= 100;
         aCSizey = 400;
         bSSizex = 88;
@@ -288,8 +288,8 @@ public class tester extends SurfaceView {
     }
 
     protected void drawHits(Canvas c){
-        c.drawText("Human Hits\t: \t"+bs.getHumanPlayerHits() + " / 17",100,50,black);
-        c.drawText("Computer Hits\t: \t"+bs.getComputerPlayerHits() + " / 17",100,150,black);
+        c.drawText("Human Hits\t: \t"+bs.getHumanPlayerHits(),100,50,black);
+        c.drawText("Computer Hits\t: \t"+bs.getComputerPlayerHits(),100,150,black);
     }
 
     protected  void drawMiss(Canvas c){
@@ -300,11 +300,12 @@ public class tester extends SurfaceView {
 
 
     protected void drawGrid(Canvas c) {
+        red.setTextSize(48);
         if(bs.getTurnCode() == 0){
-            c.drawText("Your Turn", 1400,880,red);
+            c.drawText("Your Turn", 1200,1000,red);
         }
-        if(bs.getTurnCode() == 1){
-            c.drawText("AI's Turn", 300,400, red);
+        else {
+            c.drawText("AI's Turn", 1200,1000,red);
         }
         drawMiss(c);
         drawHits(c);
@@ -439,7 +440,6 @@ public class tester extends SurfaceView {
                 }
             }
         }
-
     }
 
     public void getBs(BSGameState g) {
