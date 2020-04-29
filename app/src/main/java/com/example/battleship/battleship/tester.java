@@ -20,6 +20,8 @@ import static android.graphics.Color.WHITE;
  */
 
 public class tester extends SurfaceView {
+
+    //declare all instance vairables
     float x, y;
 
     int playerBoardSize;
@@ -70,7 +72,7 @@ public class tester extends SurfaceView {
 
     public tester(Context context, AttributeSet attrs) {
         super(context, attrs);
-
+        //set bitmaps and sizes for bitmaps
         playerBoardSize = 500;
         computerBoardSize = 800;
         backgroundWaterx = 600;
@@ -166,12 +168,16 @@ public class tester extends SurfaceView {
     }
 
     protected void drawPlaceShips(Canvas c) {
+        //background color
         white.setColor(WHITE);
+        //set background of the boards to more realistic water
         c.drawBitmap(waterBackground, 180, 167, blue);
         c.drawBitmap(placeShipBoard, 100, 100, white);
+        //draw the done button
         c.drawRect(200, 900, 760, 1030, red);
         c.drawRect(220, 920, 740, 1010, white);
         c.drawText("Done", 430, 980, black);
+        //draw the ship buttons
         if (bs != null) {
             if (bs.playerShips[0].selected) {
                 c.drawRect(1500, 100, 1560, 435, red);
@@ -194,6 +200,7 @@ public class tester extends SurfaceView {
         c.drawBitmap(pC, 1700, 100, grey);
         c.drawBitmap(pS, 1800, 100, grey);
         c.drawBitmap(pD, 1400, 100, grey);
+        //re-size the board for use in drawing on the boards
         int xSize = 60;
         int ySize = 67;
         if (bs == null) {
@@ -229,6 +236,7 @@ public class tester extends SurfaceView {
         else {
             pD = Bitmap.createScaledBitmap(pD, xSize, ySize  * 2, true);
         }
+        //this draws the selected ship on the user's board if it is placed
         int dupx = 60;
         int dupy = 67;
         for(int i = 0; i < 5; i++){
@@ -275,6 +283,7 @@ public class tester extends SurfaceView {
                 }
             }
         }
+        //button to change the orientation
         c.drawRect(1500, 900, 1800, 1030, red);
         c.drawRect(1520, 920, 1780, 1010, white);
         if(bs.orientation == 1){
@@ -286,20 +295,19 @@ public class tester extends SurfaceView {
         c.drawText("Orientation", 1550, 880, black);
 
     }
-
+    //hit counter
     protected void drawHits(Canvas c){
         c.drawText("Human Hits\t: \t"+bs.getHumanPlayerHits(),100,50,black);
         c.drawText("Computer Hits\t: \t"+bs.getComputerPlayerHits(),100,150,black);
     }
-
+    //miss counter
     protected  void drawMiss(Canvas c){
         c.drawText("Human Misses\t: \t"+bs.getHumanPlayerMiss(),100,100,black);
         c.drawText("Computer Misses\t: \t"+bs.getComputerPlayerMiss(),100,200,black);
     }
-
-
-
+    //boards for the battle phase
     protected void drawGrid(Canvas c) {
+        //turn indicator
         red.setTextSize(48);
         if(bs.getTurnCode() == 0){
             c.drawText("Your Turn", 1200,1000,red);
@@ -307,9 +315,10 @@ public class tester extends SurfaceView {
         else {
             c.drawText("AI's Turn", 1200,1000,red);
         }
+        //draw miss/hit indicators
         drawMiss(c);
         drawHits(c);
-
+        //draw the battleboards
         c.drawBitmap(waterBackground, 1088, 177, blue);
         c.drawBitmap(waterbackgroundSmall, 152, 446, blue);
         c.drawBitmap(backgroundComputer, 1000, 100, white);
@@ -318,21 +327,6 @@ public class tester extends SurfaceView {
         int dupx = 38;
         int dupy = 42;
 
-        if(bs == null || bs.computerShips[0] == null) {
-            //
-        }
-        else if(bs.computerShips[0].isSunk()){
-            int x = 152 + (dupx * (bs.computerShips[0].getX() - 1));
-            int y = 446 + (dupy * (bs.computerShips[0].getY()-1));
-            if (bs.computerShips[0].getOrientation() == 0) {
-                cAC.createScaledBitmap(cAC, dupx * 5, dupy, true);
-            }
-            else {
-                cAC.createScaledBitmap(cAC, dupy * 5, dupx, true);
-            }
-            c.drawBitmap(cAC, dupy, dupx, grey);
-        }
-
         if(bs == null || bs.humanPlayerBoard == null){
             return;
         }
@@ -340,6 +334,7 @@ public class tester extends SurfaceView {
         dupy = 42;
         int xSize = 38;
         int ySize = 42;
+        //draw the ships on your board
         if(bs.playerShips[0].orientation == 0){
             pAC90 = Bitmap.createScaledBitmap(pAC90, xSize * 5, ySize, true);
         }
@@ -414,7 +409,7 @@ public class tester extends SurfaceView {
                 }
             }
         }
-
+        //draw the hit and miss markers on the player and computer's board
         dupx = 38;
         dupy = 42;
         for (int j = 9; j > -1; j--) {
