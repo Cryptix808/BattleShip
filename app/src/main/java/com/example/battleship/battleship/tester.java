@@ -288,8 +288,8 @@ public class tester extends SurfaceView {
     }
 
     protected void drawHits(Canvas c){
-        c.drawText("Human Hits\t: \t"+bs.getHumanPlayerHits(),100,50,black);
-        c.drawText("Computer Hits\t: \t"+bs.getComputerPlayerHits(),100,150,black);
+        c.drawText("Human Hits\t: \t"+bs.getHumanPlayerHits() + " / 17",100,50,black);
+        c.drawText("Computer Hits\t: \t"+bs.getComputerPlayerHits() + " / 17",100,150,black);
     }
 
     protected  void drawMiss(Canvas c){
@@ -306,6 +306,8 @@ public class tester extends SurfaceView {
         if(bs.getTurnCode() == 1){
             c.drawText("AI's Turn", 300,400, red);
         }
+        drawMiss(c);
+        drawHits(c);
 
         c.drawBitmap(waterBackground, 1088, 177, blue);
         c.drawBitmap(waterbackgroundSmall, 152, 446, blue);
