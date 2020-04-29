@@ -61,7 +61,7 @@ public class tester extends SurfaceView {
     private Bitmap cD90;
     private Bitmap cS;
     private Bitmap cS90;
-    BSGameState bs;
+    public BSGameState bs;
     Paint white = new Paint(WHITE);
     Paint grey = new Paint(Color.GRAY);
     Paint red = new Paint(Color.RED);
@@ -287,8 +287,19 @@ public class tester extends SurfaceView {
 
     }
 
-    protected void drawGrid(Canvas c) {
+    protected void drawHits(Canvas c){
+        c.drawText("Human Hits\t: \t"+bs.getHumanPlayerHits(),100,50,black);
+        c.drawText("Computer Hits\t: \t"+bs.getComputerPlayerHits(),100,150,black);
+    }
 
+    protected  void drawMiss(Canvas c){
+        c.drawText("Human Misses\t: \t"+bs.getHumanPlayerMiss(),100,100,black);
+        c.drawText("Computer Misses\t: \t"+bs.getComputerPlayerMiss(),100,200,black);
+    }
+
+
+
+    protected void drawGrid(Canvas c) {
         c.drawBitmap(waterBackground, 1088, 177, blue);
         c.drawBitmap(waterbackgroundSmall, 152, 446, blue);
         c.drawBitmap(backgroundComputer, 1000, 100, white);
@@ -419,7 +430,6 @@ public class tester extends SurfaceView {
                 }
             }
         }
-
     }
 
     public void getBs(BSGameState g) {

@@ -30,7 +30,8 @@ public class BSGameState extends GameState {
     boolean cpuHasPlaced;
     boolean startGame;
     boolean inGame;
-    boolean isAlpha;
+    public int humanPlayerMiss;
+    public int computerPlayerMiss;
 
     public Ship playerShips[];
     public Ship computerShips[];
@@ -53,6 +54,12 @@ public class BSGameState extends GameState {
     public void setPlayer(int player) {
         this.player = player;
     }
+    public int getComputerPlayerMiss() {
+        return computerPlayerMiss;
+    }
+    public int getHumanPlayerMiss() {
+        return humanPlayerMiss;
+    }
 
     public BSGameState(){
         humanPlayerBoard = new int[10][10];
@@ -66,6 +73,8 @@ public class BSGameState extends GameState {
         player = 0;
         humanPlayerHits = 0;
         computerPlayerHits = 0;
+        computerPlayerMiss = 0;
+        humanPlayerMiss = 0;
         orientation = 1;
         cpuHasPlaced = false;
         startGame = false;
@@ -106,9 +115,11 @@ public class BSGameState extends GameState {
         computerShips = new Ship[5];
 
         for (int i = 0; i < 5; i++) {
-            playerShips[i] = bs.playerShips[i];
-            computerShips[0] = bs.computerShips[i];
+            playerShips[i] = new Ship(bs.playerShips[i]);
+            computerShips[i] = new Ship(bs.computerShips[i]);
         }
+        computerPlayerMiss = 0;
+        humanPlayerMiss = 0;
 
     }
 
@@ -127,6 +138,7 @@ public class BSGameState extends GameState {
         computerPlayerHits = 0;
         orientation = bs.orientation;
         inGame = true;
+        startGame = false;
         turnCode = bs.turnCode;
 
         playerShips = new Ship[5];
@@ -134,8 +146,10 @@ public class BSGameState extends GameState {
 
         for (int i = 0; i < 5; i++) {
             playerShips[i] = bs.playerShips[i];
-            computerShips[0] = bs.computerShips[i];
+            computerShips[i] = bs.computerShips[i];
         }
+        computerPlayerMiss = bs.computerPlayerMiss;
+        humanPlayerMiss = bs.humanPlayerMiss;
     }
 
     // in game
@@ -161,6 +175,8 @@ public class BSGameState extends GameState {
             playerShips[i] = bs.playerShips[i];
             computerShips[0] = bs.computerShips[i];
         }
+        computerPlayerMiss = bs.computerPlayerMiss;
+        humanPlayerMiss = bs.humanPlayerMiss;
     }
 
     public boolean placeShip(int player, int x, int y) {
@@ -1234,7 +1250,7 @@ public class BSGameState extends GameState {
         } while (cpuShipCounter != 17);
 
         if(cpuShipCounter == 17 && playerShipCounter == 17){
-            startGame = true;
+            inGame = true;
             return true;
         }
 
@@ -1248,6 +1264,7 @@ public class BSGameState extends GameState {
         if(computerPlayerBoard[x][y] == board.water.ordinal() && turnCode == 0) {
             computerPlayerBoard[x][y] = board.missed.ordinal();
             turnCode = 1;
+            humanPlayerMiss++;
             //check ships if sunk
             return true;
         }
@@ -1266,6 +1283,7 @@ public class BSGameState extends GameState {
         if(humanPlayerBoard[x][y] == board.water.ordinal() || humanPlayerBoard[x][y] == board.missed.ordinal() && turnCode == 1) {
             humanPlayerBoard[x][y] = board.missed.ordinal();
             turnCode = 0;
+            computerPlayerMiss++;
             return true;
         }
         if (humanPlayerBoard[x][y] == board.ship.ordinal() || humanPlayerBoard[x][y] == board.missed.ordinal() && turnCode == 1) {
