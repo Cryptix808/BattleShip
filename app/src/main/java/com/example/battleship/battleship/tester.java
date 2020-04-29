@@ -288,6 +288,12 @@ public class tester extends SurfaceView {
     }
 
     protected void drawGrid(Canvas c) {
+        if(bs.getTurnCode() == 0){
+            c.drawText("Your Turn", 1400,880,red);
+        }
+        if(bs.getTurnCode() == 1){
+            c.drawText("AI's Turn", 300,400, red);
+        }
 
         c.drawBitmap(waterBackground, 1088, 177, blue);
         c.drawBitmap(waterbackgroundSmall, 152, 446, blue);
